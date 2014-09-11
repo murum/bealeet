@@ -18,6 +18,8 @@ var autoprefix = require('gulp-autoprefixer');
 var coffee = require('gulp-coffee');
 var phpunit = require('gulp-phpunit');//notify requires >= v 0.0.3
 var imagemin = require('gulp-imagemin');
+var phpspec = require('gulp-phpspec');
+var run = require('gulp-run');
 
 //CSS directories
 var lessDir = 'app/assets/less';
@@ -63,7 +65,22 @@ gulp.task('js-libs', function() {
         .pipe(concat('libs.js'))
         .pipe(uglify())
         .pipe(gulp.dest(targetJSDir))
-})
+});
+
+gulp.task('test', function() {
+   gulp.src('spec/**/*.php')
+       .pipe(run('clear'))
+       .pipe(phpspec('', { notify: true }))
+       .on('error', notify.onError({
+           title: 'Dangit',
+           message: 'Your tests failed!',
+           icon: __dirname + '/fail.png'
+       }))
+       .pipe(notify({
+           title: 'Success',
+           message: 'All tests have returned green!'
+       }));
+});
 
 gulp.task('css-libs', function() {
     var libs = [
@@ -71,15 +88,15 @@ gulp.task('css-libs', function() {
     return gulp.src(libs)
         .pipe(concat('libs.css'))
         .pipe(gulp.dest(targetCSSDir))
-})
+});
 
 /* Watcher */
 gulp.task('watch', function() {
     gulp.watch(lessDir + '/**/*.less', ['less']);
     gulp.watch(jsDir + '/**/*.js', ['js']);
     gulp.watch('images-orig/**', ['images']);
-    //gulp.watch('app/**/*.php', ['phpunit']);
+    gulp.watch(['spec/**/*.php', 'src/**/*.php'], ['test']);
 });
 
 /* Default Task */
-gulp.task('default', ['less', 'js-libs', 'css-libs' , 'js', 'watch']);
+gulp.task('default', ['less', 'js-libs', 'css-libs', 'test', 'js', 'watch']);

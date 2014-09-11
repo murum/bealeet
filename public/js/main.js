@@ -1,0 +1,1 @@
+window.fbAsyncInit=function(){FB.init({appId:"671187556307321",xfbml:!0,version:"v2.1"})},$(function(){});

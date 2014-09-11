@@ -24,11 +24,31 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(function() 
+{
+	$environment = getenv('APP_ENV');
 
-	'local' => array('homestead'),
-
-));
+	if (strlen($environment) === 0) {
+		if ( strpos(__DIR__, '/home/forge/' . 'dev.bealeet.com') === 0 ) 
+		{
+		    $environment = 'dev';
+		} 
+		elseif ( strpos(__DIR__, '/home/forge/' . 'test.bealeet.com') === 0 ) 
+		{
+		    $environment = 'test';
+		} 
+		elseif ( strpos(__DIR__, '/home/forge/' . 'bealeet.com') === 0 ) 
+		{
+		    ini_set('error_reporting', 0);
+		    ini_set('register_globals', 'Off');
+		    $environment = 'production';
+		}
+	}
+	if (strlen($environment) === 0) {
+		$environment = 'local';
+	}
+	return $environment;
+});
 
 /*
 |--------------------------------------------------------------------------
