@@ -1,0 +1,7 @@
+Bealeet\Users\User:
+  username: $string
+  email: $string@exammple.com
+  password: $string
+  profile: $text
+  created_at: $date
+  updated_at: $date

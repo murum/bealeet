@@ -53,10 +53,10 @@
 			<div class="form-group">
 				{{ Form::label('password', 'Password')}}
 				{{ 
-					Form::password( 
+					Form::password(
 						'password',
 						array(
-							'placeholder' => 'Password', 
+							'placeholder' => 'Password',
 							'class' => 'form-control'
 						) 
 					) 
@@ -64,7 +64,7 @@
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('password_confirmation', 'Password Confirmation')}}
+				{{ Form::label('password_confirmation', 'Password Confirmation') }}
 				{{ 
 					Form::password( 
 						'password_confirmation', 
@@ -76,7 +76,7 @@
 				}}
 			</div>
 
-			{{ Form::submit('Register', array('class' => 'btn btn-success')) }}
+			{{ Form::submit('Register', array('class' => 'btn btn-success register-button')) }}
 
 			{{ Form::close() }}
 		</div>

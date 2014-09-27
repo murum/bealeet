@@ -27,7 +27,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Another action</a></li>
                             <li class="divider"></li>
-                            <li>{{ link_to_route('logout', 'Log Out') }}</li>
+                            <li>{{ link_to_route('logout', 'Log Out', null, ['class' => 'signout-button']) }}</li>
                         </ul>
                     </li>
                 @else

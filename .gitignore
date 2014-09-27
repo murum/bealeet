@@ -15,6 +15,10 @@ Thumbs.db
 .env.*.php
 .env.php
 
+### Code ception ###
+tests/_data/db.sqlite_snapshot
+tests/_output/*
+
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
@@ -60,3 +64,4 @@ com_crashlytics_export_strings.xml
 # Commenting this out is preferred by some people, see
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules
+tests/_output/*

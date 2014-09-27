@@ -82,6 +82,11 @@ return array(
 			'password' => '',
 			'prefix'   => '',
 		),
+		'codeception'  => array(
+			'driver'   => 'sqlite',
+			'database' => __DIR__.'/../database/production.sqlite',
+			'prefix'   => '',
+		),
 
 	),
 

@@ -3,21 +3,20 @@
 use Bealeet\Forms\SignInForm;
 
 class SessionsController extends \BaseController {
+	/**
+	 * @var SignInForm
+	 */
+	private $signInForm;
 
-    /**
-     * @var SignInForm
-     */
-    private $signInForm;
-
-    /**
+	/**
      * @param SignInForm $signInForm
      */
     public function __construct(SignInForm $signInForm)
     {
-        $this->signInForm = $signInForm;
+ 		$this->signInForm = $signInForm;
 
         $this->beforeFilter('guest', ['except' => 'destroy']);
-    }
+	}
 
     /**
 	 * Show the form for signing in.
@@ -49,7 +48,7 @@ class SessionsController extends \BaseController {
 
         Flash::message('Welcome back!');
 
-        return Redirect::home();
+        return Redirect::intended('');
 	}
 
     /**

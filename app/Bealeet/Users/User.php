@@ -6,7 +6,8 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Bealeet\Registration\Events\UserHasRegistered;
 use Laracasts\Commander\Events\EventGenerator;
-use Eloquent, Hash;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Hash;
 use Laracasts\Presenter\PresentableTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {

@@ -15,11 +15,11 @@ var less = require('gulp-less');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var autoprefix = require('gulp-autoprefixer');
-var coffee = require('gulp-coffee');
 var phpunit = require('gulp-phpunit');//notify requires >= v 0.0.3
 var imagemin = require('gulp-imagemin');
 var phpspec = require('gulp-phpspec');
 var run = require('gulp-run');
+var codecept = require('gulp-codeception');
 
 //CSS directories
 var lessDir = 'app/assets/less';
@@ -37,23 +37,15 @@ gulp.task('less', function() {
     return gulp.src(lessDir + '/main.less')
         .pipe(less({compress: true}).on('error', gutil.log))
         .pipe(autoprefix('last 10 versions'))
-        .pipe(gulp.dest(targetCSSDir))
-        .pipe(notify('CSS compiled, prefixed, and minified.'));
+        .pipe(gulp.dest(targetCSSDir));
 });
 
-/* coffee compile */
+/* JS compile */
 gulp.task('js', function() {
     return gulp.src(jsDir + '/**/*.js')
         .pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(gulp.dest(targetJSDir))
-        .pipe(notify('JS compiled, prefixed, and minified.'));
-});
-
-gulp.task('images', function () {
-    gulp.src('images-orig/*.{png,gif,jpg}')
-        .pipe(imagemin())
-        .pipe(gulp.dest('images/'));
+        .pipe(gulp.dest(targetJSDir));
 });
 
 gulp.task('js-libs', function() {
@@ -68,35 +60,28 @@ gulp.task('js-libs', function() {
 });
 
 gulp.task('test', function() {
-   gulp.src('spec/**/*.php')
-       .pipe(run('clear'))
-       .pipe(phpspec('', { notify: true }))
+  var options = {clear: true, notify: true, debug: true};
+
+   gulp.src('tests/**/*.php')
+       .pipe(codecept('', options))
        .on('error', notify.onError({
-           title: 'Dangit',
-           message: 'Your tests failed!',
-           icon: __dirname + '/fail.png'
+           title: 'Fail',
+           message: 'Tests failed!',
+           icon: __dirname + '/phpspec_red.png'
        }))
        .pipe(notify({
            title: 'Success',
-           message: 'All tests have returned green!'
+           message: 'All tests have returned green!',
+           icon: __dirname + '/phpspec_green.png'
        }));
-});
-
-gulp.task('css-libs', function() {
-    var libs = [
-    ]
-    return gulp.src(libs)
-        .pipe(concat('libs.css'))
-        .pipe(gulp.dest(targetCSSDir))
 });
 
 /* Watcher */
 gulp.task('watch', function() {
     gulp.watch(lessDir + '/**/*.less', ['less']);
     gulp.watch(jsDir + '/**/*.js', ['js']);
-    gulp.watch('images-orig/**', ['images']);
-    gulp.watch(['spec/**/*.php', 'src/**/*.php'], ['test']);
+    gulp.watch(['tests/**/*.php', 'app/**/*.php'], ['test']);
 });
 
 /* Default Task */
-gulp.task('default', ['less', 'js-libs', 'css-libs', 'test', 'js', 'watch']);
+gulp.task('default', ['less', 'js-libs', 'js', 'test', 'watch']);

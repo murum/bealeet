@@ -20,7 +20,7 @@
 
                 <!-- Sign In Input -->
                 <div class="form-group">
-                    {{ Form::submit('Sign In', ['class' => 'btn btn-primary']) }}
+                    {{ Form::submit('Sign In', ['class' => 'btn btn-primary login-button']) }}
                 </div>
             {{ Form::close() }}
         </div>

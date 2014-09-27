@@ -2,7 +2,7 @@
 
 use Bealeet\Forms\RegistrationForm;
 use Bealeet\Registration\RegisterUserCommand;
-use Larabook\Users\User;
+use Bealeet\Users\User;
 
 class UsersController extends \BaseController {
 
@@ -48,7 +48,10 @@ class UsersController extends \BaseController {
 	{
 		$this->registrationForm->validate( Input::all() );
 
-		$user = $this->execute(RegisterUserCommand::class);
+		extract(Input::only('username', 'email', 'password'));
+		$command = new RegisterUserCommand($username, $email, $password);
+
+		$user = $this->execute($command);
 
 		Auth::login($user);
 

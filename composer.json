@@ -13,9 +13,9 @@
 	},
     "require-dev": {
     	"way/generators": "~2.0",
-    	"codeception/codeception": "~2.0.0",
         "barryvdh/laravel-ide-helper": "1.*",
         "barryvdh/laravel-debugbar": "1.*",
+        "codeception/codeception": "2.0.*@dev",
         "laracasts/testdummy": "~1.0",
         "fzaninotto/faker": "1.4.*"
     },
