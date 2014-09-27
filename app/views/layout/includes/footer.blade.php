@@ -17,10 +17,10 @@
 
                     <ul class="footer-links">
                         <li>
-                            {{ link_to_route('home', Lang::get('letssnap.nav.contact')) }}
+                            {{ link_to_route('register', Lang::get('bealeet_menu.register')) }}
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/letssnapofficial" target="_blank">
+                            <a href="https://www.facebook.com/pages/Bealeet/1525547901015179" target="_blank">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
