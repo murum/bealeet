@@ -60,7 +60,7 @@ gulp.task('js-libs', function() {
 });
 
 gulp.task('test', function() {
-  var options = {clear: true, notify: true, debug: true};
+  var options = {clear: true, debug: false};
 
    gulp.src('tests/**/*.php')
        .pipe(codecept('', options))

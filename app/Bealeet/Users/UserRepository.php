@@ -32,18 +32,7 @@ class UserRepository {
      */
     public function findByUsername($username)
     {
-        return User::with('statuses')->whereUsername($username)->first();
-    }
-
-    /**
-     * Find a user by their id.
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function findById($id)
-    {
-        return User::findOrFail($id);
+        return User::whereUsername($username)->first();
     }
 
 } 

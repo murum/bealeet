@@ -1,6 +1,8 @@
 <?php
 
+use Bealeet\Users\UserRepository;
 use Laracasts\Commander\CommanderTrait;
+use Laracasts\TestDummy\Factory as TestDummy;
 
 class BaseController extends Controller {
 
