@@ -21,7 +21,7 @@ class LaunchController extends \BaseController {
 	{
 		$email = Input::get('email');
 
-		$list = MailchimpWrapper::lists()->getList(['name' => 'Beta Invitation'])['data'][0];
+		$list = MailchimpWrapper::lists()->getList(['name' => 'Bealeet Newsletter'])['data'][0];
 		$list_id = $list['id'];
 
 
