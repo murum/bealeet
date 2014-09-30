@@ -1,0 +1,104 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body.landing {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: url('../images/launch_bg.png');
+
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  font-family: 'Oswald', sans-serif;
+
+  text-transform: uppercase;
+  color: @brand-primary;
+  font-weight: 300;
+  margin: 0 0 1em;
+}
+
+h2 {
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+
+  text-transform: uppercase;
+  color: @brand-primary;
+  font-weight: 400;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: @dark;
+}
+
+.form-control:-moz-placeholder { /* Firefox 18- */
+  color: @dark;
+}
+
+.form-control::-moz-placeholder {  /* Firefox 19+ */
+  color: @dark;
+}
+
+.form-control:-ms-input-placeholder {
+  color: @dark;
+}
+
+p {
+  color: @light;
+  font-size: 1.125em;
+  font-family: 'Lato', sans-serif;
+}
+
+.landing-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  background: url('../images/launch_header.png') repeat-x top;
+
+  .landing-container {
+    width: 700px;
+    height: 280px;
+    overflow: visible;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    .logo {
+      background: url('../images/launch_divider.png') no-repeat center right;
+      padding-right: 45px;
+
+      img {
+        width: 100%;
+      }
+    }
+    .content {
+      padding-left: 45px;
+
+      form {
+        input {
+          height: 43px;
+
+          color: @dark;
+        }
+        .btn {
+          text-transform: uppercase;
+          height: 43px;
+          line-height: 18px;
+
+          font-weight: 300;
+          letter-spacing: 1px;
+
+          color: @light;
+        }
+      }
+    }
+  }
+}
