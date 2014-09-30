@@ -27,7 +27,7 @@ class LaunchController extends \BaseController {
 
 		try{
 			MailchimpWrapper::lists()->subscribe($list_id, array('email'=>$email));
-			Flash::success('Thanks for your request! To fulfill your request we need you to verify your email. Please check your inbox');
+			Flash::success('You\'re one step closer to done. We just need you to verify the mail. Please check your inbox.');
 		} catch (Exception $ex){
 			Flash::error($ex->getMessage());
 		}
