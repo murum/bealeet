@@ -15,11 +15,11 @@
       </p>
 
       {{ Form::open(['route' => 'launch']) }}
-        <h2>Sign up for a beta invite</h2>
+        <h2>Want to be updated with furture news?</h2>
         <div class="input-group">
-          {{ Form::text('email', null, ['placeholder' => 'Your mail adress', 'class' => 'form-control']) }}
+          {{ Form::text('email', null, ['placeholder' => 'Enter your mail', 'class' => 'form-control']) }}
           <span class="input-group-btn">
-            {{ Form::submit('Request Invite', ['class' => 'btn btn-danger']) }}
+            {{ Form::submit('Update me', ['class' => 'btn btn-info']) }}
           </span>
         </div><!-- /input-group -->
       {{ Form::close() }}
