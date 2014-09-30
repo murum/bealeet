@@ -15,7 +15,7 @@
       </p>
 
       {{ Form::open(['route' => 'launch']) }}
-        <h2>Want to be updated with furture news?</h2>
+        <h2>Want to be updated with our latest news?</h2>
         <div class="input-group">
           {{ Form::text('email', null, ['placeholder' => 'Enter your mail', 'class' => 'form-control']) }}
           <span class="input-group-btn">
