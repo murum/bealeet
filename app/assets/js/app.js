@@ -6,6 +6,5 @@ window.fbAsyncInit = function() {
     });
   };
 
-
 $(function() {
 });

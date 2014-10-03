@@ -22,6 +22,7 @@
 <body>
 
 @include('layout.includes.master.nav')
+@include('layout.includes.master.auth_modals')
 
 <div class="container">
     @include('partials/_flash')

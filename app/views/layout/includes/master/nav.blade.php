@@ -7,13 +7,13 @@
       {{-- If user is not logged in --}}
       @if (!$currentUser)
         <li>
-          <a href="{{ route('register') }}">
+          <a class="bealeet-signup" href="#0">
             <i class="fa fa-user"></i>
             Register
           </a>
         </li>
         <li>
-          <a href="{{ route('login') }}">
+          <a class="bealeet-signin" href="#0">
             <i class="fa fa-sign-in"></i>
             Log in
           </a>
