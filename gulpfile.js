@@ -34,7 +34,7 @@ var componentsDir = 'public/components';
 // Tasks
 /* less compile */
 gulp.task('less', function() {
-    return gulp.src(lessDir + '/**/*.less')
+    return gulp.src(lessDir + '/main.less')
         .pipe(less({compress: true}).on('error', gutil.log))
         .pipe(autoprefix('last 10 versions'))
         .pipe(gulp.dest(targetCSSDir));
