@@ -22,4 +22,25 @@ if(getenv('LAUNCH') === 'true') {
 	Route::get('/logout', array('as' => 'logout', 'uses' => 'SessionsController@destroy'));
 	Route::get('/login', array('as' => 'login', 'uses' => 'SessionsController@create'));
 	Route::post('/login', array('as' => 'login', 'uses' => 'SessionsController@store'));
+
+	// User profile
+	Route::get('/users/{id}', [
+		'as' => 'user_profile',
+		'uses' => 'UsersController@show'
+	]);
+
+	Route::get('/users/{id}/edit', [
+		'as' => 'user_edit',
+		'uses' => 'UsersController@edit'
+	]);
+
+	Route::post('/users/follow', [
+		'as' => 'follow',
+		'uses' => 'FollowsController@create'
+	]);
+
+	Route::delete('/users/{id}/follow', [
+		'as' => 'unfollow',
+		'uses' => 'FollowsController@destroy'
+	]);
 }

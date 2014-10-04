@@ -57,8 +57,10 @@
   @if ($currentUser)
     <div class="navbar-profile">
       <div class="navbar-profile-user">
-        <img class="navbar-profile-user-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
-        {{{ $currentUser->username }}}
+        <a href="{{ route('user_profile', ['id' => $currentUser->id]) }}">
+          <img class="navbar-profile-user-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
+          {{{ $currentUser->username }}}
+        </a>
       </div>
 
       <ul>

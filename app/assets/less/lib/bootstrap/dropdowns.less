@@ -8,6 +8,8 @@
   top: auto;
   bottom: 15px;
   left: 15px;
+
+  animation: dropdown 0.8s linear forwards;
 }
 
 .dropdown-close {
@@ -16,13 +18,11 @@
 
 .dropdowm-menu .content::before {
   opacity: 1;
-  -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
   transform: translate3d(0,0,0);
 }
 
 .open .dropdown-menu {
-  animation: dropdown 0.8s linear forwards;
 }
 
 .open .dropdown-menu {

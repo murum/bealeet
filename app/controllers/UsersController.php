@@ -3,6 +3,7 @@
 use Bealeet\Forms\RegistrationForm;
 use Bealeet\Registration\RegisterUserCommand;
 use Bealeet\Users\User;
+use Bealeet\Users\UserRepository;
 
 class UsersController extends \BaseController {
 
@@ -10,10 +11,17 @@ class UsersController extends \BaseController {
 	private $registrationForm;
 
 
-	public function __construct(RegistrationForm $registrationForm) {
-		$this->beforeFilter('guest');
+	/**
+	 * @param UserRepository $userRepository
+	 * @param RegistrationForm $registrationForm
+	 */
+	public function __construct(UserRepository $userRepository, RegistrationForm $registrationForm) {
+		$this->beforeFilter('guest', [
+			'only' => 'create, store'
+		]);
 
 		$this->registrationForm = $registrationForm;
+		$this->userRepository = $userRepository;
 	}
 
 	/**
@@ -69,7 +77,8 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$user = $this->userRepository->findById($id);
+		return View::make('users.show')->withUser($user);
 	}
 
 	/**

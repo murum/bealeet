@@ -9,9 +9,14 @@ use Laracasts\TestDummy\Factory as TestDummy;
 class FunctionalHelper extends \Codeception\Module
 {
 
-	public function haveAnAccount( $overrides = [] )
+	public function haveAnAccount( $overrides = [] , $return = false)
 	{
-		TestDummy::create('Bealeet\Users\User', $overrides);
+		if($return)
+		{
+			return TestDummy::create('Bealeet\Users\User', $overrides);
+		} else {
+			TestDummy::create('Bealeet\Users\User', $overrides);
+		}
 	}
 
 	public function signIn() {

@@ -70,4 +70,35 @@ class UserRepositoryTest extends \Codeception\TestCase\Test
 		$this->assertInstanceOf('Bealeet\Users\User', $foundUser);
 	}
 
+	/** @test */
+	public function it_finds_a_user_by_the_id()
+	{
+		// Given I have a user with a given ID
+		$user = TestDummy::create('Bealeet\Users\User', [
+			'id' => 4128912
+		]);
+
+		// When I try to fetch the user by id
+		$foundUser = $this->repo->findById(4128912);
+
+		// Then it should be found
+		$this->assertInstanceOf('Bealeet\Users\User', $foundUser);
+	}
+
+	/** @test */
+	public function it_follows_another_user()
+	{
+		// Given I have a two users
+		list($sam, $john) = TestDummy::times(2)->create('Bealeet\Users\User');
+
+		// and one user follows another user
+		$this->repo->follow($sam->id, $john);
+
+		// Then I should see that user in the list of those that $john follows...
+		$this->tester->seeRecord('follows', [
+			'user_id' => $john->id,
+			'user_id_to_follow' => $sam->id
+		]);
+	}
+
 }

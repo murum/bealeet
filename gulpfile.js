@@ -80,8 +80,8 @@ gulp.task('test', function() {
 gulp.task('watch', function() {
     gulp.watch(lessDir + '/**/*.less', ['less']);
     gulp.watch(jsDir + '/**/*.js', ['js']);
-    gulp.watch(['tests/**/*.php', 'app/**/*.php'], ['test']);
+    //gulp.watch(['tests/**/*.php', 'app/**/*.php'], ['test']);
 });
 
 /* Default Task */
-gulp.task('default', ['less', 'js-libs', 'js', 'test', 'watch']);
+gulp.task('default', ['less', 'js-libs', 'js', 'watch']);
