@@ -7,12 +7,26 @@
 
     padding: 12px;
     height: 50px;
+    border-radius: 0;
+
+    &:focus {
+      border-color: @dark-light;
+      outline: 0;
+      box-shadow: none;
+    }
   }
 
   .input-group {
     .form-control {
       padding: 12px 12px 12px 4px;
       border-left: none;
+      border-radius: 0;
+
+      &:focus {
+        border-color: @dark-light;
+        outline: 0;
+        box-shadow: 0 0 2px @dark-lighter;
+      }
     }
   }
   .input-group-addon {
@@ -20,6 +34,7 @@
     border: 1px solid @dark-light;
     border-right: none;
     color: @dark-lighter;
+    border-radius: 0;
   }
 
   label {
