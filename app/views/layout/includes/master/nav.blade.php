@@ -43,11 +43,55 @@
       </div>
 
       <ul>
-        <li>
-          <a href="{{ route('logout') }}">
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#">
             <i class="fa fa-cog"></i>
-            Log out
+            Settings
           </a>
+          <div class="dropdown-menu">
+            <div class="dropdown-header">
+              <div class="row">
+                <div class="col-xs-12">
+                  <img class="dropdown-header-gravatar" src="{{ $currentUser->present()->gravatar(40) }}" alt="{{ $currentUser->username }}">
+                  <h4 class="dropdown-header-username">{{{ $currentUser->username }}}</h4>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-body">
+              <div class="row">
+                <div class="col-xs-12">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Friends
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <div class="row">
+                <div class="col-xs-12">
+                  <ul>
+                    <li>
+                      <a class="signout-button" href="{{ route('logout') }}">
+                        <i class="fa fa-power-off"></i>
+                      </a>
+                    </li>
+                  </ul>
+                  <a class="dropdown-close" href="#">
+                    <i class="fa fa-times"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
     </div>

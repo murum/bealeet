@@ -58,7 +58,7 @@
 
         <!-- Register Input -->
         <div class="form-group">
-          {{ Form::submit('Register', ['class' => 'btn btn-lg btn-block btn-info login-button']) }}
+          {{ Form::submit('Register', ['class' => 'btn btn-lg btn-block btn-info register-button']) }}
         </div>
       {{ Form::close() }}
 

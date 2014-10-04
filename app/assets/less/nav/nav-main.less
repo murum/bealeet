@@ -98,9 +98,9 @@ div.navbar {
       }
     }
 
-    ul {
-      li {
-        a {
+    > ul {
+      > li {
+        > a {
           height: 70px;
           padding: 10px 0;
 
@@ -119,6 +119,86 @@ div.navbar {
             font-size: 2em;
 
             display: block;
+          }
+        }
+
+        .dropdown-menu {
+          width: 320px;
+          border: 1px solid @dark-light;
+
+          background: @dark;
+          border-radius: 0;
+          padding: 1em;
+
+          .dropdown-header {
+            text-align: right;
+            border-bottom: 3px solid @dark-light;
+            padding: 0;
+            padding-bottom: 1em;
+
+            h4.dropdown-header-username {
+              float: right;
+              margin: 0 12px 0 0;
+
+              color: @dark-lighter;
+              line-height: 40px;
+            }
+
+            img.dropdown-header-gravatar {
+              border-radius: 50%;
+              float: right;
+            }
+          }
+
+          .dropdown-body {
+
+            ul {
+              margin: 1em 0;
+
+              li {
+                text-align: right;
+
+                a {
+                  display: block;
+                  padding: 0.25em 0;
+
+                  color: @dark-lighter;
+                  font-size: 1.25em;
+                  font-weight: bold;
+                }
+              }
+            }
+
+          }
+
+          .dropdown-footer {
+            padding: 0;
+            padding-top: 1em;
+
+            border-top: 3px solid @dark-light;
+
+            text-align: right;
+
+            ul {
+              float: right;
+
+              li {
+                a {
+                  color: @dark-lighter;
+
+                  i {
+                    font-size: 2em;
+                  }
+                }
+              }
+            }
+          }
+
+          a.dropdown-close {
+            color: @brand-danger;
+            i {
+              font-size: 2em;
+            }
           }
         }
       }

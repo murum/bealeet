@@ -8,11 +8,11 @@ $I->amOnPage('/');
 $I->click('Register');
 
 $I->seeCurrentUrlEquals('/register');
-$I->fillField('Username', 'JohnDoe');
-$I->fillField('Email', 'john@doe.com');
-$I->fillField('Email Confirmation', 'john@doe.com');
-$I->fillField('Password', 'johndoecom');
-$I->fillField('Password Confirmation', 'johndoecom');
+$I->fillField('username', 'JohnDoe');
+$I->fillField('email', 'john@doe.com');
+$I->fillField('email_confirmation', 'john@doe.com');
+$I->fillField('password', 'johndoecom');
+$I->fillField('password_confirmation', 'johndoecom');
 $I->click('.register-button');
 
 $I->canSeeInDatabase('users', array(
