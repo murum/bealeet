@@ -13,6 +13,10 @@
     <meta property="og:description" content="BeALeet.com the new place to be if you're a E-Sport entusiast">
     <meta property="og:type" content="website"/>
 
+    @if($app->environment() === 'dev' || $app->environment() === 'local')
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    @endif
+
     <title>BeALeet.com</title>
     {{ HTML::style('/css/libs.css') }}
     {{ HTML::style('/css/main.css?v=0_1') }}
