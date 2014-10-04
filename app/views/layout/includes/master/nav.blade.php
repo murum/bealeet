@@ -18,6 +18,25 @@
             Log in
           </a>
         </li>
+      @else
+        <li>
+          <a href="">
+            <i class="fa fa-search-plus"></i>
+            Find player
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa fa-users"></i>
+            Find clan
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa fa-star"></i>
+            Favourites
+          </a>
+        </li>
       @endif
 
       <li class="hidden dropdown">
