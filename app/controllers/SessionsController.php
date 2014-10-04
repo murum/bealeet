@@ -46,7 +46,7 @@ class SessionsController extends \BaseController {
             return Redirect::back()->withInput();
         }
 
-        Flash::message('Welcome back!');
+        Flash::success('Welcome back!');
 
         return Redirect::intended('');
 	}

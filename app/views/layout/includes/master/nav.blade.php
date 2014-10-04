@@ -7,13 +7,13 @@
       {{-- If user is not logged in --}}
       @if (!$currentUser)
         <li>
-          <a class="bealeet-signup" href="#0">
+          <a href="{{ route('register') }}">
             <i class="fa fa-user"></i>
             Register
           </a>
         </li>
         <li>
-          <a class="bealeet-signin" href="#0">
+          <a href="{{ route('login') }}">
             <i class="fa fa-sign-in"></i>
             Log in
           </a>
@@ -37,16 +37,19 @@
   {{-- If user is not logged in --}}
   @if ($currentUser)
     <div class="navbar-profile">
-      <img class="nav-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
-      Username
+      <div class="navbar-profile-user">
+        <img class="navbar-profile-user-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
+        {{{ $currentUser->username }}}
+      </div>
 
-      <li class="dropdown">
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Another action</a></li>
-          <li class="divider"></li>
-          <li>{{ link_to_route('logout', 'Log Out', null, ['class' => 'signout-button']) }}</li>
-        </ul>
-      </li>
+      <ul>
+        <li>
+          <a href="{{ route('logout') }}">
+            <i class="fa fa-cog"></i>
+            Log out
+          </a>
+        </li>
+      </ul>
     </div>
   @endif
 </div>
