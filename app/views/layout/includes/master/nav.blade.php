@@ -64,7 +64,11 @@
       </div>
 
       <div class="navbar-profile-messages">
-        <a href="#">
+        @if( $currentUser->hasNewMessages() )
+          <a class="notify" href="#">
+        @else
+          <a href="#">
+        @endif
           <i class="fa fa-envelope-o"></i>
           <span class="navbar-profile-unread-messages">
             <span class="small">Coming soon</span>

@@ -1,7 +1,8 @@
 .form-group {
   .form-control {
     background: transparent;
-    border-color: @dark-light;
+    border-color: @light-darker;
+    box-shadow: none;
 
     color: @dark-lighter;
 
@@ -18,23 +19,25 @@
 
   .input-group {
     .form-control {
-      padding: 12px 12px 12px 4px;
+      padding: 12px 12px 12px 6px;
       border-left: none;
       border-radius: 0;
+      box-shadow: none;
 
       &:focus {
-        border-color: @dark-light;
+        border-color: @light-darker;
+        background: @light-dark;
         outline: 0;
-        box-shadow: 0 0 2px @dark-lighter;
       }
     }
   }
   .input-group-addon {
     background: none;
-    border: 1px solid @dark-light;
+    border: 1px solid @light-darker;
     border-right: none;
     color: @dark-lighter;
     border-radius: 0;
+    padding-right: 6px;
   }
 
   label {
