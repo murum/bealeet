@@ -63,6 +63,15 @@
         </a>
       </div>
 
+      <div class="navbar-profile-messages">
+        <a href="#">
+          <i class="fa fa-envelope-o"></i>
+          <span class="navbar-profile-unread-messages">
+            <span class="small">Coming soon</span>
+          </span>
+        </a>
+      </div>
+
       <ul>
         <li class="dropdown">
           <a class="dropdown-toggle" href="#">
