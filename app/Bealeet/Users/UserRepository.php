@@ -70,4 +70,15 @@ class UserRepository {
 		return $user->followedUsers()->detach($userIdToUnfollow);
 	}
 
+	/**
+	 * Fetch followed users
+	 *
+	 * @param $user
+	 * @return mixed
+	 */
+	public function findFollowedUsers(User $user)
+	{
+		return $user->followedUsers()->get();
+	}
+
 } 

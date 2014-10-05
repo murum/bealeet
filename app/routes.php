@@ -42,6 +42,12 @@ if(getenv('LAUNCH') === 'true') {
 		'uses' => 'FollowsController@create'
 	]);
 
+	Route::get('/follows', [
+		'before' => 'auth',
+		'as' => 'follows',
+		'uses' => 'FollowsController@index'
+	]);
+
 	Route::delete('/users/{id}/follow', [
 		'before' => 'auth',
 		'as' => 'unfollow',

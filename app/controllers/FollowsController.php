@@ -2,8 +2,40 @@
 
 use Bealeet\Users\FollowUserCommand;
 use Bealeet\Users\UnfollowUserCommand;
+use Bealeet\Users\UserRepository;
 
 class FollowsController extends \BaseController {
+	/**
+	 * @var UserRepository
+	 */
+	private $userRepository;
+
+	/**
+	 * @param UserRepository $userRepository
+	 */
+	public function __construct(UserRepository $userRepository)
+	{
+		$this->userRepository = $userRepository;
+	}
+
+	/**
+	 * List users you follow
+	 *
+	 * @return mixed
+	 */
+	public function index()
+	{
+		$user = $this->userRepository->findById(Auth::user()->id);
+
+		$follows = $this->userRepository->findFollowedUsers($user);
+
+		return View::make('follow.index', compact('follows'));
+	}
+
+	public function random()
+	{
+		$user = $this->userRepository->findById(Auth::user()->id);
+	}
 
 	/**
 	 * Store a newly created follow resource in storage.

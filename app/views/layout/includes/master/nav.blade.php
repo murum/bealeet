@@ -83,13 +83,13 @@
                 <div class="col-xs-12">
                   <ul>
                     <li>
-                      <a href="#">
+                      <a href="{{ route('user_profile', $currentUser->id) }}">
                         Profile
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        Friends
+                      <a href="{{ route('follows') }}">
+                        People you follow
                       </a>
                     </li>
                   </ul>

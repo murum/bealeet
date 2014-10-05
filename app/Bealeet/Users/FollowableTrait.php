@@ -35,4 +35,14 @@ trait FollowableTrait {
 		return in_array($this->id, $idsWhoOtherUserFollows);
 	}
 
+	/**
+	 * Determine if current user follows any users
+	 *
+	 * @return bool
+	 */
+	public function isFollowingUsers()
+	{
+		return ($this->followedUsers()->count() > 0);
+	}
+
 }
