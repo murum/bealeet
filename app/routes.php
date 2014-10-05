@@ -25,21 +25,25 @@ if(getenv('LAUNCH') === 'true') {
 
 	// User profile
 	Route::get('/users/{id}', [
+		'before' => 'auth',
 		'as' => 'user_profile',
 		'uses' => 'UsersController@show'
 	]);
 
 	Route::get('/users/{id}/edit', [
+		'before' => 'auth',
 		'as' => 'user_edit',
 		'uses' => 'UsersController@edit'
 	]);
 
 	Route::post('/users/follow', [
+		'before' => 'auth',
 		'as' => 'follow',
 		'uses' => 'FollowsController@create'
 	]);
 
 	Route::delete('/users/{id}/follow', [
+		'before' => 'auth',
 		'as' => 'unfollow',
 		'uses' => 'FollowsController@destroy'
 	]);
