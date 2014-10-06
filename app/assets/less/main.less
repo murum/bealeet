@@ -4,17 +4,21 @@
 // Libs
 @import "/public/components/bootstrap/less/bootstrap.less";
 @import "/public/components/fontawesome/less/font-awesome.less";
-
-// Modifed Libs
-@import "lib/bootstrap/bootstrap.less";
+@import (less) "/public/components/chosen-bower/chosen.min.css";
 
 // Animations
 @import "animation/animations.less";
 @import "animation/alert.less";
+@import "animation/dropdown.less";
+
+// Modifed Libs
+@import "lib/bootstrap/bootstrap.less";
+@import "lib/chosen/chosen.less";
 
 // Base / Common less
 @import "base.less";
 @import "common.less";
+@import "common/modalbox.less";
 
 // Alert
 @import "alert.less";
@@ -30,3 +34,6 @@
 
 // Authentication
 @import "authentication/signup.less";
+
+// Users
+@import "users/profile.less";

@@ -1,7 +1,10 @@
 <?php
 
+use Bealeet\Users\AddUserGameCommand;
 use Bealeet\Forms\RegistrationForm;
 use Bealeet\Registration\RegisterUserCommand;
+use Bealeet\Games\ChangeUserGamesCommand;
+use Bealeet\Users\RemoveUserGameCommand;
 use Bealeet\Users\User;
 use Bealeet\Users\UserRepository;
 
@@ -82,6 +85,17 @@ class UsersController extends \BaseController {
 	}
 
 	/**
+	 * Display the current user profile.
+	 * GET /profile
+	 *
+	 * @return mixed
+	 */
+	public function profile()
+	{
+		return View::make('users.profile');
+	}
+
+	/**
 	 * Show the form for editing the specified resource.
 	 * GET /users/{id}/edit
 	 *
@@ -104,6 +118,39 @@ class UsersController extends \BaseController {
 	{
 		//
 	}
+
+	/**
+	 *
+	 */
+	public function primary_game()
+	{
+		return response::json(['success' => 'true']);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function change_games()
+	{
+		$input = Input::all();
+
+		if( isset( $input['deselected'] ) ) {
+			$this->execute(RemoveUserGameCommand::class, $input);
+
+			$response['success'] = true;
+			$response['message'] = 'Game was successfully deleted!';
+		}
+		else if( isset( $input['selected'] ) )
+		{
+			$this->execute(AddUserGameCommand::class, $input);
+
+			$response['success'] = true;
+			$response['message'] = 'Game was successfully added!';
+		}
+
+		return Response::json($response);
+	}
+
 
 	/**
 	 * Remove the specified resource from storage.

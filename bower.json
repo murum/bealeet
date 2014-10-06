@@ -1,8 +1,9 @@
 {
-    "name": "bealeet",
-    "dependencies": {
-        "jquery": "~2.1.1",
-        "bootstrap": "~3.1.1",
-        "fontawesome": "~4.2.*"
-    }
+  "name": "bealeet",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "fontawesome": "~4.2.*",
+    "chosen-bower": "~1.1.0"
+  }
 }

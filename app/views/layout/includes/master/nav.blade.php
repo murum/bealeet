@@ -57,7 +57,7 @@
   @if ($currentUser)
     <div class="navbar-profile">
       <div class="navbar-profile-user">
-        <a href="{{ route('user_profile', ['id' => $currentUser->id]) }}">
+        <a href="{{ route('profile') }}">
           <img class="navbar-profile-user-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
           {{{ $currentUser->username }}}
         </a>
@@ -96,7 +96,7 @@
                 <div class="col-xs-12">
                   <ul>
                     <li>
-                      <a href="{{ route('user_profile', $currentUser->id) }}">
+                      <a href="{{ route('profile') }}">
                         Profile
                       </a>
                     </li>

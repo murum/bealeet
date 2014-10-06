@@ -81,4 +81,41 @@ class UserRepository {
 		return $user->followedUsers()->get();
 	}
 
+	/**
+	 * Add a game
+	 *
+	 * @param $gameIdToAttach
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function addGame($gameIdToAttach, User $user)
+	{
+		return $user->games()->attach($gameIdToAttach);
+	}
+
+	/**
+	 * Add a game and set it as favorite
+	 *
+	 * @param $gameIdToFavorite
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function addFavoriteGame($gameIdToFavorite, User $user)
+	{
+		return $user->games()->attach($gameIdToFavorite, ['favorite' => true]);
+	}
+
+
+	/**
+	 * Remove a game
+	 *
+	 * @param $gameIdToDetach
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function removeGame($gameIdToDetach, User $user)
+	{
+		return $user->games()->detach($gameIdToDetach);
+	}
+
 } 

@@ -32,11 +32,6 @@ class FollowsController extends \BaseController {
 		return View::make('follow.index', compact('follows'));
 	}
 
-	public function random()
-	{
-		$user = $this->userRepository->findById(Auth::user()->id);
-	}
-
 	/**
 	 * Store a newly created follow resource in storage.
 	 *

@@ -30,6 +30,12 @@ if(getenv('LAUNCH') === 'true') {
 		'uses' => 'UsersController@show'
 	]);
 
+	Route::get('/profile', [
+		'before' => 'auth',
+		'as' => 'profile',
+		'uses' => 'UsersController@profile'
+	]);
+
 	Route::get('/users/{id}/edit', [
 		'before' => 'auth',
 		'as' => 'user_edit',
@@ -52,5 +58,18 @@ if(getenv('LAUNCH') === 'true') {
 		'before' => 'auth',
 		'as' => 'unfollow',
 		'uses' => 'FollowsController@destroy'
+	]);
+
+	// Games
+	Route::post('/users/primary_game', [
+		'before' => 'auth',
+		'as' => 'primary_game',
+		'uses' => 'UsersController@primary_game'
+	]);
+
+	Route::put('change_games', [
+		'before' => 'auth',
+		'as' => 'change_games',
+		'uses' => 'UsersController@change_games'
 	]);
 }
