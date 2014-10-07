@@ -45,13 +45,23 @@ trait GameTrait {
 	}
 
 	/**
-	 * Returns tha games in a list
+	 * Returns tha games id in a list
 	 *
 	 * @return mixed
 	 */
 	public function listUserGamesId()
 	{
 		return $this->games()->lists('game_id', 'game_id');
+	}
+
+	/**
+	 * Returns tha games in a list
+	 *
+	 * @return mixed
+	 */
+	public function listUserGames()
+	{
+		return $this->games()->lists('name', 'game_id');
 	}
 
 	/**

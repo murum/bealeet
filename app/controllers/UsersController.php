@@ -4,6 +4,7 @@ use Bealeet\Users\AddUserGameCommand;
 use Bealeet\Forms\RegistrationForm;
 use Bealeet\Registration\RegisterUserCommand;
 use Bealeet\Games\ChangeUserGamesCommand;
+use Bealeet\Users\PrimaryUserGameCommand;
 use Bealeet\Users\RemoveUserGameCommand;
 use Bealeet\Users\User;
 use Bealeet\Users\UserRepository;
@@ -124,7 +125,14 @@ class UsersController extends \BaseController {
 	 */
 	public function primary_game()
 	{
-		return response::json(['success' => 'true']);
+		$input = Input::all();
+
+		$this->execute(PrimaryUserGameCommand::class, $input);
+
+		$response['success'] = true;
+		$response['message'] = 'Game was successfully set as primary!';
+
+		return Response::json($response);
 	}
 
 	/**

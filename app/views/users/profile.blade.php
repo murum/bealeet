@@ -25,10 +25,8 @@
         <div class="col-xs-12">
           <div class="pull-left">
             <div class="user-profile-subheader-games">
-              <div class="user-profile-subheader-games-primary">
-                @include('users.partials.primary-game-form')
-                @include('users.partials.add-game-form')
-              </div>
+              @include('users.partials.primary-game-form')
+              @include('users.partials.add-game-form')
             </div>
           </div>
           <div class="pull-right">

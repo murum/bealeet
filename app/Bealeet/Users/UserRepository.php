@@ -100,6 +100,37 @@ class UserRepository {
 	 * @param User $user
 	 * @return mixed
 	 */
+	public function setFavoriteGame($gameIdToFavorite, User $user)
+	{
+		$gameToFavorite = $user->games()->whereGameId($gameIdToFavorite)->first();
+		$gameToFavorite->pivot->favorite = true;
+
+		return $gameToFavorite->pivot->save();
+	}
+
+	/**
+	 * Reset users favorite game
+	 *
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function resetFavoriteGame(User $user)
+	{
+		foreach ( $user->games()->whereFavorite(true)->get() as $user_games) {
+			$user_games->pivot->favorite = false;
+			$user_games->pivot->save();
+		}
+
+		return ($user->games()->whereFavorite(true)->count() == 0);
+	}
+
+	/**
+	 * Set users favorite game
+	 *
+	 * @param $gameIdToFavorite
+	 * @param User $user
+	 * @return mixed
+	 */
 	public function addFavoriteGame($gameIdToFavorite, User $user)
 	{
 		return $user->games()->attach($gameIdToFavorite, ['favorite' => true]);

@@ -52,7 +52,8 @@ gulp.task('js-libs', function() {
     var libs = [
         componentsDir + '/jquery/dist/jquery.js',
         componentsDir + '/bootstrap/dist/js/bootstrap.js',
-        componentsDir + '/chosen-bower/chosen.jquery.min.js'
+        componentsDir + '/chosen-bower/chosen.jquery.min.js',
+        componentsDir + '/bootstrap-select/dist/js/bootstrap-select.min.js'
     ]
     return gulp.src(libs)
         .pipe(concat('libs.js'))

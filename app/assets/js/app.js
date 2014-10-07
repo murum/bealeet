@@ -50,7 +50,33 @@ Bealeet.chosen = {
     }
 };
 
+Bealeet.selectpicker = {
+    init: function() {
+        $('select.selectpicker').selectpicker();
+
+        $('div.user-profile-subheader-games-primary select')
+            .selectpicker()
+            .on('change', this.userChangePrimaryGame);
+    },
+    userChangePrimaryGame: function() {
+        var form = $(this).closest('form');
+        var url = form.attr('action');
+        var favoriteGame = $(this).val();
+
+        $.ajax({
+            url: url,
+            type: 'put',
+            dataType: 'json',
+            data: {favoriteGameId: favoriteGame},
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
+}
+
 $(function() {
     Bealeet.toggle.init();
     Bealeet.chosen.init();
+    Bealeet.selectpicker.init();
 });

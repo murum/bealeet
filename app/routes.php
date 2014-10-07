@@ -61,7 +61,7 @@ if(getenv('LAUNCH') === 'true') {
 	]);
 
 	// Games
-	Route::post('/users/primary_game', [
+	Route::put('/users/primary_game', [
 		'before' => 'auth',
 		'as' => 'primary_game',
 		'uses' => 'UsersController@primary_game'
