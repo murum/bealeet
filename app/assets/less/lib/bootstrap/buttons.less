@@ -1,11 +1,9 @@
 .btn {
-  border-radius: 0;
 }
 
 .btn-lg,
 .btn-sm,
 .btn-xs {
-  border-radius: 0;
 }
 
 .btn-facebook {
@@ -15,5 +13,25 @@
   &:hover {
     background: darken(@brand-facebook, 5%);
     color: @light;
+  }
+}
+
+.btn-info-outline {
+  position: relative;
+  background: transparent;
+
+  border: 1px solid @brand-info;
+  color: @brand-info;
+
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+
+  transition: all 150ms;
+
+  &:hover,
+  &:active {
+    color: #fff;
+    background: @brand-info;
   }
 }

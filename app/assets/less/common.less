@@ -17,3 +17,52 @@
 .form-control:-ms-input-placeholder {
   color: @dark-lighter;
 }
+
+.equal-height-wrapper {
+  display: table !important;
+  width: 100%;
+  border-collapse: separate;
+
+  .equal-height-row {
+    display: table-row;
+
+
+    &:before, &:after {
+      content: none !important;
+    }
+
+    .equal-height-col {
+      display: table-cell;
+      height: 100%;
+      float: none;
+      vertical-align: top;
+
+
+      &.quote-wrapper {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+/** Media Queries for screen sizes  */
+@media (max-width: @screen-xs-max) {
+  .equal-height-wrapper {
+    .equal-height-row {
+      .equal-height-col {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+
+  .equal-height-wrapper {
+    .equal-height-row {
+      .equal-height-col {
+        //display: block;
+      }
+    }
+  }
+}

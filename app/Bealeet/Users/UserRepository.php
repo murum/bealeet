@@ -107,6 +107,18 @@ class UserRepository {
 
 
 	/**
+	 * Set the users only game as a favorite game
+	 *
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function setRemainingGameAsFavorite(User $user)
+	{
+		return $this->addFavoriteGame($user->games()->first()->id, $user);
+	}
+
+
+	/**
 	 * Remove a game
 	 *
 	 * @param $gameIdToDetach
