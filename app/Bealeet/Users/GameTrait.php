@@ -45,6 +45,16 @@ trait GameTrait {
 	}
 
 	/**
+	 * Return true if the user has only one game added to the accountgit
+	 *
+	 * @return bool
+	 */
+	public function hasOneGame()
+	{
+		return ($this->games()->count() == 1);
+	}
+
+	/**
 	 * Returns tha games id in a list
 	 *
 	 * @return mixed

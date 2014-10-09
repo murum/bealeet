@@ -30,7 +30,7 @@ class RemoveUserGameCommandHandler implements CommandHandler {
 
 		$this->userRepository->removeGame($command->deselected, $user);
 
-		if( ! $user->hasMoreThanOneGame() )
+		if( $user->hasOneGame() )
 		{
 			$this->userRepository->setRemainingGameAsFavorite($user);
 		}
