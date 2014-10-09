@@ -72,4 +72,10 @@ if(getenv('LAUNCH') === 'true') {
 		'as' => 'change_games',
 		'uses' => 'UsersController@change_games'
 	]);
+
+	Route::put('/users/search_team/status', [
+		'before' => 'auth',
+		'as' => 'user_search_team',
+		'uses' => 'UsersController@search_team_status'
+	]);
 }

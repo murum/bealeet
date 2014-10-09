@@ -148,6 +148,21 @@ class UserRepository {
 		return $this->addFavoriteGame($user->games()->first()->id, $user);
 	}
 
+	/**
+	 * Set the users search team status
+	 *
+	 * @param $isSearching
+	 * @param User $user
+	 * @return bool
+	 */
+	public function setSearchTeamStatus($isSearching, User $user)
+	{
+		$isSearching = ($isSearching == 'true') ? false : true;
+
+		$user->searching_team = $isSearching;
+		return $user->save();
+	}
+
 
 	/**
 	 * Remove a game

@@ -30,7 +30,12 @@
             </div>
           </div>
           <div class="pull-right">
-            <div class="user-profile-subheader-searching"></div>
+            <div class="user-profile-subheader-searching">
+              <div class="pull-right user-profile-subheader-searching-switcher">
+                @include('users.partials.search-team-form')
+              </div>
+              <h3 class="pull-right user-profile-subheader-searching-title">Searching for clan / team</h3>
+            </div>
           </div>
         </div>
       </div>

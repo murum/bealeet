@@ -90,6 +90,81 @@
       top: 34px;
     }
   }
+
+  .user-profile-subheader-searching {
+    h3.user-profile-subheader-searching-title {
+      margin: 0 12px 0 0;
+
+      font-size: 1em;
+      line-height: 34px;
+      font-family: @font-headings;
+      text-transform: uppercase;
+    }
+
+    div.user-profile-subheader-searching-switcher {
+      .user-profile-subheader-searching-switcher-item {
+        position: relative;
+        width: 100px;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select: none;
+      }
+      .user-profile-subheader-searching-switcher-item-checkbox {
+        display: none;
+      }
+      .user-profile-subheader-searching-switcher-item-label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .user-profile-subheader-searching-switcher-item-inner {
+        display: block; width: 200%; margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+      }
+      .user-profile-subheader-searching-switcher-item-inner:before, .user-profile-subheader-searching-switcher-item-inner:after {
+        display: block;
+        float: left; width: 50%; height: 34px; padding: 0; line-height: 34px;
+
+        color: white;
+        font-family: @font-bread;
+        font-weight: bold;
+        background-clip: padding-box;
+      }
+      .user-profile-subheader-searching-switcher-item-inner:before {
+        content: "OFF";
+        padding-left: 10px;
+        background-color: @dark;
+        color: @light;
+      }
+      .user-profile-subheader-searching-switcher-item-inner:after {
+        content: "ON";
+        padding-right: 10px;
+        background-color: @dark;
+        color: @light;
+        text-align: right;
+      }
+      .user-profile-subheader-searching-switcher-item-switch {
+        display: block; width: 40px; margin: 0px;
+        background: @brand-info;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 60px;
+        transition: all 0.3s ease-in 0s;
+      }
+      .user-profile-subheader-searching-switcher-item-label {
+        margin-bottom: 0;
+      }
+      .user-profile-subheader-searching-switcher-item-checkbox:checked + .user-profile-subheader-searching-switcher-item-label .user-profile-subheader-searching-switcher-item-inner {
+        margin-left: 0;
+      }
+      .user-profile-subheader-searching-switcher-item-checkbox:checked + .user-profile-subheader-searching-switcher-item-label .user-profile-subheader-searching-switcher-item-switch {
+        right: 0px;
+
+        background: @brand-danger;
+      }
+    }
+  }
 }
 
 .user-profile-box {

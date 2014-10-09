@@ -50,6 +50,27 @@ Bealeet.chosen = {
     }
 };
 
+Bealeet.switcher = {
+    init: function() {
+        $('input#user-profile-searching-switcher').on('change', this.userChangeSearchStatus)
+    },
+    userChangeSearchStatus: function() {
+        var form = $(this).closest('form');
+        var url = form.attr('action');
+        var isSearching = $(this).prop('checked');
+
+        $.ajax({
+            url: url,
+            type: 'put',
+            dataType: 'json',
+            data: {isSearching: isSearching},
+            success: function(data) {
+                console.log(data);
+            }
+        })
+    }
+}
+
 Bealeet.selectpicker = {
     init: function() {
         $('select.selectpicker').selectpicker();
@@ -79,4 +100,5 @@ $(function() {
     Bealeet.toggle.init();
     Bealeet.chosen.init();
     Bealeet.selectpicker.init();
+    Bealeet.switcher.init();
 });

@@ -4,6 +4,7 @@ use Bealeet\Users\AddUserGameCommand;
 use Bealeet\Forms\RegistrationForm;
 use Bealeet\Registration\RegisterUserCommand;
 use Bealeet\Games\ChangeUserGamesCommand;
+use Bealeet\Users\ChangeUserSearchTeamStatusCommand;
 use Bealeet\Users\PrimaryUserGameCommand;
 use Bealeet\Users\RemoveUserGameCommand;
 use Bealeet\Users\User;
@@ -155,6 +156,24 @@ class UsersController extends \BaseController {
 			$response['success'] = true;
 			$response['message'] = 'Game was successfully added!';
 		}
+
+		return Response::json($response);
+	}
+
+	/**
+	 * Sets the users search team status from " Input isSearching "
+	 * PUT /users/search_team/status
+	 *
+	 * @return mixed
+	 */
+	public function search_team_status()
+	{
+		$input = Input::all();
+
+		$this->execute(ChangeUserSearchTeamStatusCommand::class, $input);
+
+		$response['success'] = true;
+		$response['message'] = 'Game was successfully deleted!';
 
 		return Response::json($response);
 	}
