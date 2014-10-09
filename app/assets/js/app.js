@@ -44,7 +44,11 @@ Bealeet.chosen = {
             dataType: 'json',
             data: gameChange,
             success: function(data) {
-                console.log(data);
+                FlashMessage.success(data.message);
+            },
+            error: function(data) {
+                var data = $.parseJSON(data.responseText);
+                FlashMessage.error(data.error.message);
             }
         });
     }
@@ -65,7 +69,11 @@ Bealeet.switcher = {
             dataType: 'json',
             data: {isSearching: isSearching},
             success: function(data) {
-                console.log(data);
+                FlashMessage.success(data.message);
+            },
+            error: function(data) {
+                var data = $.parseJSON(data.responseText);
+                FlashMessage.error(data.error.message);
             }
         })
     }
@@ -90,7 +98,11 @@ Bealeet.selectpicker = {
             dataType: 'json',
             data: {favoriteGameId: favoriteGame},
             success: function(data) {
-                console.log(data);
+                FlashMessage.success(data.message);
+            },
+            error: function(data) {
+                var data = $.parseJSON(data.responseText);
+                FlashMessage.error(data.error.message);
             }
         });
     }

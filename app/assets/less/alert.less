@@ -1,11 +1,18 @@
-.alert {
+.flash {
   z-index: 1111;
   position: fixed;
   right: 15px;
   top: 15px;
-  animation: alert 3000ms linear both;
+  width: 25%;
+  text-align: right;
 
-  button.close {
-    margin-left: 15px;
+  .alert {
+    display: block;
+    margin: 15px 0;
+    animation: alert 3000ms linear both;
+
+    button.close {
+      margin-left: 15px;
+    }
   }
 }

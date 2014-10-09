@@ -170,10 +170,13 @@ class UsersController extends \BaseController {
 	{
 		$input = Input::all();
 
-		$this->execute(ChangeUserSearchTeamStatusCommand::class, $input);
+		$user = $this->execute(ChangeUserSearchTeamStatusCommand::class, $input);
 
-		$response['success'] = true;
-		$response['message'] = 'Game was successfully deleted!';
+		// Build up return message
+		if($user->searching_team)
+			$response['message'] = 'You are now searching for a team!';
+		else
+			$response['message'] = 'You are no longer searching for a team!';
 
 		return Response::json($response);
 	}
