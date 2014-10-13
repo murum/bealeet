@@ -50,4 +50,12 @@ trait MessageTrait {
 		return $this->recievedMessages()->whereRead(false)->take($count)->orderBy('created_at', 'DESC')->get();
 	}
 
+	/**
+	 * Get amount of unread messages
+	 *
+	 * @return mixed
+	 */
+	public function getUnreadMessageCount() {
+		return $this->recievedMessages()->whereRead(false)->count();
+	}
 }

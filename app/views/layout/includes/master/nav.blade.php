@@ -65,13 +65,13 @@
 
       <div class="navbar-profile-messages">
         @if( $currentUser->hasNewMessages() )
-          <a class="notify" href="#">
+          <a class="notify" href="{{ route('profile') }}">
         @else
-          <a href="#">
+          <a href="{{ route('profile') }}">
         @endif
           <i class="fa fa-envelope-o"></i>
           <span class="navbar-profile-unread-messages">
-            <span class="small">Coming soon</span>
+            <span class="small">{{ $currentUser->getUnreadMessageCount() }}</span>
           </span>
         </a>
       </div>
