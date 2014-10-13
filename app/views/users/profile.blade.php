@@ -93,42 +93,9 @@
 
               <div class="user-profile-box-body">
                 <ul class="row user-profile-messages">
-                  <li class="col-xs-12 user-profile-messages-item">
-                    <div class="pull-left user-profile-messages-item-image">
-                      <img src="{{ $currentUser->present()->gravatar(60) }}" />
-                    </div>
-                    <div class="col-sm-6 user-profile-messages-item-message">
-                      <h3>Username</h3>
-                      <p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod...</p>
-                    </div>
-                    <div class="pull-right user-profile-messages-item-button">
-                        <a class="btn btn-info-outline">View message</a>
-                    </div>
-                  </li>
-                  <li class="col-xs-12 user-profile-messages-item">
-                    <div class="pull-left user-profile-messages-item-image">
-                      <img src="{{ $currentUser->present()->gravatar(60) }}" />
-                    </div>
-                    <div class="col-sm-6 user-profile-messages-item-message">
-                      <h3>Username</h3>
-                      <p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod...</p>
-                    </div>
-                    <div class="pull-right user-profile-messages-item-button">
-                        <a class="btn btn-info-outline">View message</a>
-                    </div>
-                  </li>
-                  <li class="col-xs-12 user-profile-messages-item">
-                    <div class="pull-left user-profile-messages-item-image">
-                      <img src="{{ $currentUser->present()->gravatar(60) }}" />
-                    </div>
-                    <div class="col-sm-6 user-profile-messages-item-message">
-                      <h3>Username</h3>
-                      <p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod...</p>
-                    </div>
-                    <div class="pull-right user-profile-messages-item-button">
-                        <a class="btn btn-info-outline">View message</a>
-                    </div>
-                  </li>
+                  @foreach( $currentUser->getUnreadRecievedMessages(3) as $message )
+                    @include('users.partials.profile.recieved-message')
+                  @endforeach
                 </ul>
               </div>
             </div>

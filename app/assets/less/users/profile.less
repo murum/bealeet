@@ -248,9 +248,23 @@
           }
         }
 
+        &.unread {
+          .user-profile-messages-item-message {
+            font-weight: 700;
+          }
+        }
+
         .user-profile-messages-item-button {
           line-height: 77px;
           margin-right: 15px;
+        }
+
+        &.unread {
+          .user-profile-messages-item-button {
+            .btn {
+              font-weight: 700;
+            }
+          }
         }
       }
     }

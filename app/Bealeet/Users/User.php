@@ -12,7 +12,7 @@ use Laracasts\Presenter\PresentableTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-    use UserTrait, RemindableTrait, EventGenerator, PresentableTrait, FollowableTrait, MessagingTrait, GameTrait;
+    use UserTrait, RemindableTrait, EventGenerator, PresentableTrait, FollowableTrait, MessageTrait, GameTrait;
 
     /**
      * Which fields may be mass assigned?
