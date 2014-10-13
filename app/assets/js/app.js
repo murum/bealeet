@@ -48,7 +48,11 @@ Bealeet.chosen = {
             },
             error: function(data) {
                 var data = $.parseJSON(data.responseText);
-                FlashMessage.error(data.error.message);
+                if(data.message) {
+                    FlashMessage.error(data.message);
+                } else {
+                    FlashMessage.error(data.error.message);
+                }
             }
         });
     }
@@ -73,7 +77,11 @@ Bealeet.switcher = {
             },
             error: function(data) {
                 var data = $.parseJSON(data.responseText);
-                FlashMessage.error(data.error.message);
+                if(data.message) {
+                    FlashMessage.error(data.message);
+                } else {
+                    FlashMessage.error(data.error.message);
+                }
             }
         })
     }
@@ -102,7 +110,11 @@ Bealeet.selectpicker = {
             },
             error: function(data) {
                 var data = $.parseJSON(data.responseText);
-                FlashMessage.error(data.error.message);
+                if(data.message) {
+                    FlashMessage.error(data.message);
+                } else {
+                    FlashMessage.error(data.error.message);
+                }
             }
         });
     }

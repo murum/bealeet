@@ -56,6 +56,11 @@ App::error(function(Laracasts\Validation\FormValidationException $exception, $co
    return Redirect::back()->withInput()->withErrors($exception->getErrors());
 });
 
+App::error(function(\Illuminate\Database\Eloquent\ModelNotFoundException $exception, $code)
+{
+	return Response::json(['message' => 'The object you tried to use was not found.'], 500);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

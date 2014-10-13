@@ -94,6 +94,17 @@ class UserRepository {
 	}
 
 	/**
+	 * Check if a user has a game with given ID.
+	 *
+	 * @param $gameId
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function hasGame($gameId, User $user) {
+		return ($user->games()->whereGameId($gameId)->count() > 0) ? true : false;
+	}
+
+	/**
 	 * Add a game and set it as favorite
 	 *
 	 * @param $gameIdToFavorite
@@ -102,9 +113,8 @@ class UserRepository {
 	 */
 	public function setFavoriteGame($gameIdToFavorite, User $user)
 	{
-		$gameToFavorite = $user->games()->whereGameId($gameIdToFavorite)->first();
+		$gameToFavorite = $user->games()->whereGameId($gameIdToFavorite)->firstOrFail();
 		$gameToFavorite->pivot->favorite = true;
-
 		return $gameToFavorite->pivot->save();
 	}
 

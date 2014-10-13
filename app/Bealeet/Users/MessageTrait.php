@@ -50,5 +50,4 @@ trait MessageTrait {
 		return $this->recievedMessages()->whereRead(false)->take($count)->orderBy('created_at', 'DESC')->get();
 	}
 
-
 }
