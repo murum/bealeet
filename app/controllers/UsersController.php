@@ -82,6 +82,11 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		if(Auth::user()->id == $id)
+		{
+			return Redirect::route('profile');
+		}
+
 		$user = $this->userRepository->findById($id);
 		return View::make('users.show')->withUser($user);
 	}
