@@ -78,4 +78,10 @@ if(getenv('LAUNCH') === 'true') {
 		'as' => 'user_search_team',
 		'uses' => 'UsersController@search_team_status'
 	]);
+
+	Route::post('/users/{id}/review', [
+		'before' => 'auth',
+		'as' => 'post_review',
+		'uses' => 'ReviewsController@store'
+	]);
 }

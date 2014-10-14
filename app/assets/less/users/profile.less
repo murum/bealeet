@@ -43,6 +43,14 @@
   }
 }
 .user-profile-subheader {
+  .user-profile-subheader-primary-game {
+    font-weight: 400;
+    font-family: @font-headings;
+    text-transform: uppercase;
+    font-size: 1.725em;
+    line-height: 45px;
+  }
+
   .user-profile-subheader-games-primary {
     margin-right: 15px;
 
@@ -327,6 +335,57 @@
         .user-profile-teams-item-button {
           line-height: 77px;
           margin-right: 15px;
+        }
+      }
+    }
+  }
+
+  &.user-profile-box-reviews {
+    .user-profile-box-body {
+      .user-profile-reviews-item {
+        padding: 11px 0;
+
+        &:nth-child(2n) {
+          background: #f6f6f6;
+        }
+
+        .user-profile-reviews-item-image {
+          line-height: 77px;
+          margin-left: 15px;
+
+          img {
+            border-radius: 50%;
+            border: 3px solid @blue-grey;
+          }
+        }
+
+        .user-profile-reviews-item-review {
+          padding-top: 12px;
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+
+      .user-profile-review-form {
+        margin: 15px 0;
+
+        label {
+          color: @dark;
+
+          font-family: @font-headings;
+          font-weight: 400;
+          text-transform: uppercase;
+        }
+
+        textarea {
+          padding: 6px;
+          height: 140px;
+
+          color: @dark;
+
+          resize: none;
         }
       }
     }

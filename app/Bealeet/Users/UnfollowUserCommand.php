@@ -18,7 +18,6 @@ class UnfollowUserCommand {
 	 */
 	function __construct($userId, $userIdToUnfollow)
 	{
-		dd($userId);
 		$this->userId = $userId;
 		$this->userIdToUnfollow = $userIdToUnfollow;
 	}

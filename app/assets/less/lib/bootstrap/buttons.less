@@ -17,7 +17,6 @@
 }
 
 .btn-info-outline {
-  position: relative;
   background: transparent;
 
   border: 1px solid @brand-info;
@@ -33,5 +32,24 @@
   &:active {
     color: #fff;
     background: @brand-info;
+  }
+}
+
+.btn-danger-outline {
+  background: transparent;
+
+  border: 1px solid @brand-danger;
+  color: @brand-danger;
+
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+
+  transition: all 150ms;
+
+  &:hover,
+  &:active {
+    color: #fff;
+    background: @brand-danger;
   }
 }

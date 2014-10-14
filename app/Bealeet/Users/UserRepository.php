@@ -47,6 +47,53 @@ class UserRepository {
 	}
 
 	/**
+	 * Add a review to a Bealeet user.
+	 *
+	 * @param $review
+	 * @param User $writer
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function addReview($review, User $writer, User $user)
+	{
+		$review = new Review([
+			'writer_id' => $writer->id,
+			'user_id' => $user->id,
+			'review' => $review
+		]);
+
+		return $user->reviews()->save($review);
+	}
+
+	/**
+	 * Check if the user already has reviews from a specific writer
+	 *
+	 * @param User $writer
+	 * @param User $user
+	 * @return bool
+	 */
+	public function alreadyReviewed(User $writer, User $user)
+	{
+		return ($user->reviews()->whereWriterId($writer->id)->count() > 0) ? true : false;
+	}
+
+	/**
+	 * Remove all reviews from a current writer to a user
+	 *
+	 * @param User $writer
+	 * @param User $user
+	 * @return bool
+	 */
+	public function removeReviews(User $writer, User $user)
+	{
+		foreach( $user->reviews()->whereWriterId($writer->id)->get() as $review)
+		{
+			$review->delete();
+		}
+		return true;
+	}
+
+	/**
 	 * Follow a Bealeet user.
 	 *
 	 * @param $userIdToFollow
