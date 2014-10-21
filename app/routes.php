@@ -93,4 +93,10 @@ if(getenv('LAUNCH') === 'true') {
 		'as' => 'add_skills',
 		'uses' => 'UsersController@change_skill'
 	]);
+
+	Route::post('/users/{id}/add_skill_point', [
+		'before' => 'auth',
+		'as' => 'add_skill_point',
+		'uses' => 'SkillsController@store'
+	]);
 }

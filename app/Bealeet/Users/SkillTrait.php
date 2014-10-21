@@ -71,4 +71,35 @@ trait SkillTrait {
 		return Skill::all()->lists('name', 'id');
 	}
 
+	/**
+	 * Check if a user has already added a skill point to given user.
+	 *
+	 * @param User $user
+	 * @param $skill_id
+	 * @return bool
+	 */
+	public function hasAddedSkillPoint(User $user, $skill_id) {
+		return ($user->skills()->whereTestifierId($this->id)->whereSkillId($skill_id)->count() > 0) ? true : false;
+	}
+
+	/**
+	 * Check if the current user can add a skill point to given user.
+	 *
+	 * @param User $user
+	 * @param $skill_id
+	 * @return bool
+	 */
+	public function canAddSkillPoint(User $user, $skill_id) {
+		if($user->is($this))
+			return false;
+
+		return ($user->skills()->whereTestifierId($this->id)->whereSkillId($skill_id)->count() > 0) ? false : true;
+	}
+
+	public function addSkillPointToUser(User $user, $skill_id) {
+		return $user->skills()->attach($skill_id, [
+			'testifier_id' => $this->id
+		]);
+	}
+
 }

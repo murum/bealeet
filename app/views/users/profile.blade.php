@@ -119,7 +119,7 @@
                 @if( $currentUser->hasSkills() )
                   <ul class="user-profile-skills">
                     @foreach($currentUser->groupedSkills() as $skill)
-                      <li data-amount="{{{ $skill->count - 1 }}}" class="user-profile-skills-item">
+                        <li data-amount="{{{ $skill->count - 1 }}}" class="user-profile-skills-item plusable">
                         {{{ $skill->name }}}
                       </li>
                     @endforeach

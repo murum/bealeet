@@ -93,8 +93,17 @@
                 @if( $user->hasSkills() )
                   <ul class="user-profile-skills">
                     @foreach($user->groupedSkills() as $skill)
-                      <li data-amount="{{{ $skill->count - 1 }}}" class="user-profile-skills-item">
+                      <li
+                        data-skill="{{ $skill->pivot->skill_id }}"
+                        data-amount="{{{ $skill->count - 1 }}}"
+                        class="
+                          user-profile-skills-item
+                          @if( $currentUser->canAddSkillPoint($user, $skill->pivot->skill_id) )
+                            plusable
+                          @endif
+                        ">
                         {{{ $skill->name }}}
+                        @include('users.partials.testify-skill')
                       </li>
                     @endforeach
                   </ul>

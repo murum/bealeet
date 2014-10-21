@@ -184,6 +184,42 @@ Bealeet.selectpicker = {
             }
         });
     }
+};
+
+Bealeet.skills = {
+    init: function() {
+      $('.btn-testify-skill').on('click', this.addSkillPoint);
+    },
+    addSkillPoint: function() {
+        var that = $(this),
+            form = that.closest('form'),
+            url = form.attr('action'),
+            parent = that.closest('.user-profile-skills-item'),
+            skill = parent.data('skill');
+
+        $.ajax({
+            url: url,
+            type: 'post',
+            dataType: 'json',
+            data: {skillId: skill},
+            success: function(data) {
+                form.remove();
+                parent.removeClass('plusable');
+
+                parent.attr('data-amount', (parseInt(parent.data('amount')) + 1));
+
+                FlashMessage.success(data.message);
+            },
+            error: function(data) {
+                var data = $.parseJSON(data.responseText);
+                if(data.message) {
+                    FlashMessage.error(data.message);
+                } else {
+                    FlashMessage.error(data.error.message);
+                }
+            }
+        });
+    },
 }
 
 $(function() {
@@ -191,4 +227,7 @@ $(function() {
     Bealeet.chosen.init();
     Bealeet.selectpicker.init();
     Bealeet.switcher.init();
+
+
+    Bealeet.skills.init();
 });
