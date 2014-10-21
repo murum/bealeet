@@ -96,6 +96,13 @@ trait SkillTrait {
 		return ($user->skills()->whereTestifierId($this->id)->whereSkillId($skill_id)->count() > 0) ? false : true;
 	}
 
+	/**
+	 * Add a skill point to a given user for a given skill id
+	 *
+	 * @param User $user
+	 * @param $skill_id
+	 * @return mixed
+	 */
 	public function addSkillPointToUser(User $user, $skill_id) {
 		return $user->skills()->attach($skill_id, [
 			'testifier_id' => $this->id
