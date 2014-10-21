@@ -13,6 +13,7 @@ Bealeet.toggle = {
         $('.dropdown a.dropdown-toggle').on('click', this.toggleDropdown);
         $('.dropdown a.dropdown-close').on('click', this.hideDropdown);
         $('button.user-profile-subheader-games-add-button').on('click', this.toggleAddGameDropdown);
+        $('button.user-profile-skills-add-button').on('click', this.toggleAddSkillDropdown);
     },
     toggleDropdown: function(e) {
         e.preventDefault();
@@ -25,6 +26,10 @@ Bealeet.toggle = {
     toggleAddGameDropdown: function(e) {
         e.preventDefault();
         $(this).closest('.user-profile-subheader-games-add').toggleClass('open');
+    },
+    toggleAddSkillDropdown: function(e) {
+        e.preventDefault();
+        $(this).closest('.user-profile-skills-add').toggleClass('open');
     }
 };
 
@@ -33,6 +38,9 @@ Bealeet.chosen = {
         $('div.user-profile-subheader-games-add select.chosen-list')
             .chosen({width: "100%"})
             .change(this.userChangeGames);
+        $('div.user-profile-skills-add select.chosen-list')
+            .chosen({width: "100%"})
+            .change(this.userChangeSkills);
     },
     userChangeGames: function(data, gameChange) {
         var form = $(this).closest('form');
@@ -55,6 +63,64 @@ Bealeet.chosen = {
                 }
             }
         });
+    },
+    userChangeSkills: function(data, skillChange) {
+        var form = $(this).closest('form');
+        var url = form.attr('action');
+
+        if(skillChange.deselected) {
+            swal({
+                title: "Are you sure?",
+                text: "When you remove a skill you will also lose all your points for the specific skill.!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#45c54b",
+                confirmButtonText: "Yes, remove skill!",
+                cancelButtonText: "Regret",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url: url,
+                        type: 'put',
+                        dataType: 'json',
+                        data: skillChange,
+                        success: function(data) {
+                            FlashMessage.success(data.message);
+                        },
+                        error: function(data) {
+                            var data = $.parseJSON(data.responseText);
+                            if(data.message) {
+                                FlashMessage.error(data.message);
+                            } else {
+                                FlashMessage.error(data.error.message);
+                            }
+                        }
+                    });
+                } else {
+                    return false
+                }
+            });
+        } else {
+            $.ajax({
+                url: url,
+                type: 'put',
+                dataType: 'json',
+                data: skillChange,
+                success: function(data) {
+                    FlashMessage.success(data.message);
+                },
+                error: function(data) {
+                    var data = $.parseJSON(data.responseText);
+                    if(data.message) {
+                        FlashMessage.error(data.message);
+                    } else {
+                        FlashMessage.error(data.error.message);
+                    }
+                }
+            });
+        }
     }
 };
 

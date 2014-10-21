@@ -90,16 +90,17 @@
               </div>
 
               <div class="user-profile-box-body">
-                <ul class="user-profile-skills">
-                  <li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="8" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="93" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="10" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="140" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="1" class="user-profile-skills-item">Skill number 40</li>
-                  <li data-amount="0" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="0" class="user-profile-skills-item">Skill number 1</li>
-                </ul>
+                @if( $user->hasSkills() )
+                  <ul class="user-profile-skills">
+                    @foreach($user->groupedSkills() as $skill)
+                      <li data-amount="{{{ $skill->count - 1 }}}" class="user-profile-skills-item">
+                        {{{ $skill->name }}}
+                      </li>
+                    @endforeach
+                  </ul>
+                @else
+                  <h3>{{ $user->username }} has no available skills</h3>
+                @endif
               </div>
             </div>
           </div>

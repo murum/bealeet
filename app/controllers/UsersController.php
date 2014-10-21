@@ -4,9 +4,11 @@ use Bealeet\Users\AddUserGameCommand;
 use Bealeet\Forms\RegistrationForm;
 use Bealeet\Registration\RegisterUserCommand;
 use Bealeet\Games\ChangeUserGamesCommand;
+use Bealeet\Users\AddUserSkillCommand;
 use Bealeet\Users\ChangeUserSearchTeamStatusCommand;
 use Bealeet\Users\PrimaryUserGameCommand;
 use Bealeet\Users\RemoveUserGameCommand;
+use Bealeet\Users\RemoveUserSkillCommand;
 use Bealeet\Users\User;
 use Bealeet\Users\UserRepository;
 
@@ -160,6 +162,32 @@ class UsersController extends \BaseController {
 
 			$response['success'] = true;
 			$response['message'] = 'Game was successfully added!';
+		}
+
+		return Response::json($response);
+	}
+
+	/**
+	 * Change user skill status
+	 *
+	 * @return mixed
+	 */
+	public function change_skill()
+	{
+		$input = Input::all();
+
+		if( isset( $input['deselected'] ) ) {
+			$this->execute(RemoveUserSkillCommand::class, $input);
+
+			$response['success'] = true;
+			$response['message'] = 'Skill was successfully deleted!';
+		}
+		else if( isset( $input['selected'] ) )
+		{
+			$this->execute(AddUserSkillCommand::class, $input);
+
+			$response['success'] = true;
+			$response['message'] = 'Skill was successfully added!';
 		}
 
 		return Response::json($response);

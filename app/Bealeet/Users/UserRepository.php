@@ -141,6 +141,18 @@ class UserRepository {
 	}
 
 	/**
+	 * Add a skill
+	 *
+	 * @param $gameIdToAttach
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function addSkill($skillIdToAttach, User $user)
+	{
+		return $user->skills()->attach($skillIdToAttach);
+	}
+
+	/**
 	 * Check if a user has a game with given ID.
 	 *
 	 * @param $gameId
@@ -231,6 +243,18 @@ class UserRepository {
 	public function removeGame($gameIdToDetach, User $user)
 	{
 		return $user->games()->detach($gameIdToDetach);
+	}
+
+	/**
+	 * Removes a skill
+	 *
+	 * @param $skillIdToDetach
+	 * @param User $user
+	 * @return mixed
+	 */
+	public function removeSkill($skillIdToDetach, User $user)
+	{
+		return $user->skills()->detach($skillIdToDetach);
 	}
 
 } 

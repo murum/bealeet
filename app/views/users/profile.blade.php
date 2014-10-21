@@ -116,19 +116,24 @@
               </div>
 
               <div class="user-profile-box-body">
-                <ul class="user-profile-skills">
-                  <li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="8" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="93" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="10" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="140" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="1" class="user-profile-skills-item">Skill number 40</li>
-                  <li data-amount="0" class="user-profile-skills-item">Skill number 1</li><li data-amount="2" class="user-profile-skills-item">Skill number 1</li>
-                  <li data-amount="0" class="user-profile-skills-item">Skill number 1</li>
-                </ul>
+                @if( $currentUser->hasSkills() )
+                  <ul class="user-profile-skills">
+                    @foreach($currentUser->groupedSkills() as $skill)
+                      <li data-amount="{{{ $skill->count - 1 }}}" class="user-profile-skills-item">
+                        {{{ $skill->name }}}
+                      </li>
+                    @endforeach
+                  </ul>
+                @else
+                  <h3>You've still not added any skills</h3>
+                @endif
+
+                @include('users.partials.add-skill-form')
+
               </div>
             </div>
           </div>
+
           <div class="col-xs-12 col-sm-6 equal-height-col modal-box">
             <div class="user-profile-box user-profile-box-teamhistory">
               <div class="user-profile-box-header">
@@ -191,13 +196,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="user-profile-footer">
-      <a class="btn btn-lg btn-info-outline" href="{{{ route('user_edit', ['id' => $currentUser->id]) }}}">
-        <i class="fa fa-edit"></i>
-        Edit profile
-      </a>
     </div>
   </div>
 @stop

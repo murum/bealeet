@@ -73,15 +73,24 @@ if(getenv('LAUNCH') === 'true') {
 		'uses' => 'UsersController@change_games'
 	]);
 
+	// Teams
 	Route::put('/users/search_team/status', [
 		'before' => 'auth',
 		'as' => 'user_search_team',
 		'uses' => 'UsersController@search_team_status'
 	]);
 
+	// Reviews
 	Route::post('/users/{id}/review', [
 		'before' => 'auth',
 		'as' => 'post_review',
 		'uses' => 'ReviewsController@store'
+	]);
+
+	// Skills
+	Route::put('/users/change_skills', [
+		'before' => 'auth',
+		'as' => 'add_skills',
+		'uses' => 'UsersController@change_skill'
 	]);
 }

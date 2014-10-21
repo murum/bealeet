@@ -303,6 +303,39 @@
         }
       }
     }
+
+    .user-profile-skills-add {
+      position: relative;
+
+      &.open {
+        .user-profile-skills-add-button-open {
+          display: none;
+        }
+        .user-profile-skills-add-button-close {
+          display: block;
+        }
+        .dropdown {
+          opacity: 1;
+
+          animation: dropdown 0.8s linear forwards;
+        }
+      }
+      .user-profile-skills-add-button-close {
+        display: none;
+      }
+      .dropdown {
+        .modal-box;
+        z-index: 1;
+
+        opacity: 0;
+
+        margin: 0;
+        width: 400px;
+
+        position: absolute;
+        top: 34px;
+      }
+    }
   }
 
   &.user-profile-box-teamhistory {
