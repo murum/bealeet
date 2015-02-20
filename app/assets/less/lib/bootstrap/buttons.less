@@ -35,6 +35,25 @@
   }
 }
 
+.btn-primary-outline {
+  background: transparent;
+
+  border: 1px solid @brand-primary;
+  color: @brand-primary;
+
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+
+  transition: all 150ms;
+
+  &:hover,
+  &:active {
+    color: #fff;
+    background: @brand-primary;
+  }
+}
+
 .btn-danger-outline {
   background: transparent;
 

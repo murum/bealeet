@@ -1,0 +1,47 @@
+.player {
+  background: @light ;
+
+  .player-header {
+    margin: -15px;
+
+    background: @light url('/images/player-header-cs-go.jpg') no-repeat;
+
+    height: 141px;
+  }
+
+  .player-skills {
+    margin: 15px -15px;
+    border-top: 1px solid @light-darker;
+    border-bottom: 1px solid @light-darker;
+
+    li {
+      .row;
+      margin: 0;
+      padding: 3px 15px;
+
+      .player-skills-item-name {
+        width: 50%;
+        float: left;
+        font-weight: bold;
+
+        &:after {
+          content: ':';
+        }
+      }
+
+      .player-skills-item-value {
+        width: 50%;
+        float: left;
+      }
+    }
+
+    li:nth-child(2n+1) {
+
+      background: @lighter;
+    }
+  }
+
+  .player-buttons {
+    margin: 15px 0;
+  }
+}

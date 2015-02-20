@@ -99,4 +99,11 @@ if(getenv('LAUNCH') === 'true') {
 		'as' => 'add_skill_point',
 		'uses' => 'SkillsController@store'
 	]);
+
+	// Find players
+	Route::get('/find/players', [
+		'before' => 'auth',
+		'as' => 'find_players',
+		'uses' => 'PlayersController@index'
+	]);
 }

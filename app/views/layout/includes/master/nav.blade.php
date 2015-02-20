@@ -20,7 +20,7 @@
         </li>
       @else
         <li>
-          <a href="">
+          <a href="{{ route('find_players') }}">
             <i class="fa fa-search-plus"></i>
             Find player
           </a>

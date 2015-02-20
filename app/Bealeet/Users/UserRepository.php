@@ -47,6 +47,16 @@ class UserRepository {
 	}
 
 	/**
+	 * Get players who is searching for a team in a pagination of 30.
+	 *
+	 * @return mixed
+	 */
+	public function findUsersSearchingClan()
+	{
+		return User::whereSearchingTeam(true)->paginate(30);
+	}
+
+	/**
 	 * Add a review to a Bealeet user.
 	 *
 	 * @param $review
