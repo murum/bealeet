@@ -36,6 +36,12 @@ if(getenv('LAUNCH') === 'true') {
 		'uses' => 'UsersController@profile'
 	]);
 
+	Route::post('/profile', [
+		'before' => 'auth',
+		'as' => 'profile.update',
+		'uses' => 'UsersController@profile_update'
+	]);
+
 	Route::get('/users/{id}/edit', [
 		'before' => 'auth',
 		'as' => 'user_edit',

@@ -105,6 +105,30 @@ class UsersController extends \BaseController {
 	}
 
 	/**
+	 * Update current users profile
+	 * POST /profile
+	 *
+	 * @return mixed
+	 */
+	public function profile_update()
+	{
+		$user = Auth::user();
+
+		$input = Input::only(['age', 'description', 'location']);
+
+		$user->age = $input['age'];
+		$user->location = $input['location'];
+		$user->description = $input['description'];
+		if($user->save()) {
+			Flash::success('Your profile was updated!');
+			return View::make('users.profile');
+		} else {
+			Flash::error('Your profile could not be svaed!');
+			return View::make('users.profile');
+		}
+	}
+
+	/**
 	 * Show the form for editing the specified resource.
 	 * GET /users/{id}/edit
 	 *

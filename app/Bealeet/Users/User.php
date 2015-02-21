@@ -93,4 +93,32 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->username != $user->username;
 	}
 
+
+	/**
+	 * Returns true if the user has description
+	 *
+	 * @return bool
+	 */
+	public function hasDescription() {
+		return empty($this->description) ? false : true;
+	}
+
+	/**
+	 * Returns true if the user has an age
+	 *
+	 * @return bool
+	 */
+	public function hasAge() {
+		return empty($this->age) ? false : true;
+	}
+
+	/**
+	 * Returns true if the user has Location
+	 *
+	 * @return bool
+	 */
+	public function hasLocation() {
+		return empty($this->location) ? false : true;
+	}
+
 }
