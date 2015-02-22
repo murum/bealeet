@@ -51,9 +51,25 @@ class UserRepository {
 	 *
 	 * @return mixed
 	 */
-	public function findUsersSearchingClan()
+	public function findUsersSearchingClan($game = null)
 	{
-		return User::whereSearchingTeam(true)->paginate(30);
+		if(isset($game)) {
+			$users = static::getSearchingPlayersByGame($game);
+		} else {
+			$users = User::whereSearchingTeam(true)->paginate(30);
+		}
+		return $users;
+	}
+
+	public static function getSearchingPlayersByGame($game) {
+		$users_to_return = [];
+		$users = User::whereSearchingTeam(true)->get();
+		foreach ( $users as $user ) {
+			if($user->favoriteGame()->slug === $game->slug) {
+				$users_to_return[] = $user;
+			}
+		}
+		return $users_to_return;
 	}
 
 	/**

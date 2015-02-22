@@ -1,6 +1,8 @@
 <?php
 
+use Bealeet\Games\Game;
 use Bealeet\Users\UserRepository;
+use Illuminate\Support\Facades\View;
 
 class PlayersController extends BaseController {
 
@@ -20,7 +22,16 @@ class PlayersController extends BaseController {
 	public function index()
 	{
 		$players = $this->userRepository->findUsersSearchingClan();
-		return View::make('players.index', compact('players'));
+		$games = Game::all();
+		return View::make('players.index', compact('players', 'games'));
+	}
+
+	public function filter($game)
+	{
+		$active_game = Game::whereSlug($game)->first();
+		$players = $this->userRepository->findUsersSearchingClan($active_game);
+		$games = Game::all();
+		return View::make('players.index', compact('players', 'games', 'active_game'));
 	}
 
 }

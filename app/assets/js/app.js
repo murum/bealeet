@@ -219,8 +219,18 @@ Bealeet.skills = {
                 }
             }
         });
+    }
+};
+
+Bealeet.findPlayers = {
+    init: function() {
+        $("select#filterGames").on('change', this.filterGame);
     },
-}
+    filterGame: function() {
+
+        window.location.replace(window.location.origin + '/find/players/' + this.value);
+    }
+};
 
 $(function() {
     Bealeet.toggle.init();
@@ -228,6 +238,7 @@ $(function() {
     Bealeet.selectpicker.init();
     Bealeet.switcher.init();
 
-
     Bealeet.skills.init();
+
+    Bealeet.findPlayers.init();
 });

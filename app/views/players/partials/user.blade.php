@@ -1,9 +1,12 @@
 <div class="col-xs-12 col-sm-4">
     <div class="player">
         <div class="player-header player-header-{{ $player->favoriteGame()->slug }}"></div>
-        <h3>
+        <h2>
             {{{ $player->username }}}
-        </h3>
+        </h2>
+        <p class="text-smaller">
+            {{{ $player->description }}}
+        </p>
 
         @unless($player->skills->isEmpty())
             <ul class="player-skills">

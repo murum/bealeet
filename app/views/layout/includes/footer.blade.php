@@ -4,7 +4,7 @@
             <div class="col-xs-12">
                 <div class="pull-left">
                   <p class="footer-copy">
-                      &copy; Be A Leet 2014
+                      &copy; Be A Leet 2014-{{{ \Carbon\Carbon::now()->year }}}
                   </p>
                 </div>
                 <div class="pull-right">

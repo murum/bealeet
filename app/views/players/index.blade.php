@@ -7,6 +7,8 @@
             Filter
         </h2>
         @include('players.partials.players-filter')
+
+        <h2>More filters to come</h2>
     </div>
 @stop
 

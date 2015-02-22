@@ -112,4 +112,10 @@ if(getenv('LAUNCH') === 'true') {
 		'as' => 'find_players',
 		'uses' => 'PlayersController@index'
 	]);
+
+	Route::get('/find/players/{game}', [
+		'before' => 'auth',
+		'as' => 'find_players.filter',
+		'uses' => 'PlayersController@filter'
+	]);
 }
