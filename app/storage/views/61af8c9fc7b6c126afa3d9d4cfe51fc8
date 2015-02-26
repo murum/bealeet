@@ -1,0 +1,46 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+    <?php if($errors->any()): ?>
+    <div class="modal-box"> <!-- sign up form -->
+    <?php else: ?>
+    <div class="modal-box signin-box"> <!-- sign up form -->
+    <?php endif; ?>
+      <h1>Sign in!</h1>
+      <?php echo Form::open(['route' => 'login']); ?>
+
+        <!-- Email Form Input -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-user"></i>
+            </div>
+            <?php echo Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail',  'required' => 'required']); ?>
+
+          </div>
+        </div>
+
+        <!-- Password Form Input -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-key"></i>
+            </div>
+            <?php echo Form::password('password', ['placeholder' => 'Password', 'class' => 'form-control', 'required' => 'required']); ?>
+
+          </div>
+        </div>
+
+        <!-- Sign In Input -->
+        <div class="form-group">
+          <?php echo Form::submit('Sign In', ['class' => 'btn btn-lg btn-block btn-info login-button']); ?>
+
+        </div>
+      <?php echo Form::close(); ?>
+
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

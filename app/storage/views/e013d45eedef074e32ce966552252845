@@ -1,31 +1,31 @@
 <div class="navbar">
-  <a class="navbar-brand" rel="home" href="{{ route('home') }}">
+  <a class="navbar-brand" rel="home" href="<?php echo route('home'); ?>">
     <img src="/images/logo.png" />
   </a>
   <div class="navbar-nav">
     <ul>
-      {{-- If user is not logged in --}}
-      @if (!$currentUser)
+      <?php /* If user is not logged in */ ?>
+      <?php if(!$currentUser): ?>
         <li>
-          <a href="{{ route('register') }}">
+          <a href="<?php echo route('register'); ?>">
             <i class="fa fa-user"></i>
             Register
           </a>
         </li>
         <li>
-          <a href="{{ route('login') }}">
+          <a href="<?php echo route('login'); ?>">
             <i class="fa fa-sign-in"></i>
             Log in
           </a>
         </li>
-      @else
+      <?php else: ?>
         <li>
-          <a href="{{ route('find_players') }}">
+          <a href="<?php echo route('find_players'); ?>">
             <i class="fa fa-search-plus"></i>
             Find players
           </a>
         </li>
-        {{--
+        <?php /*
         <li>
           <a href="">
             <i class="fa fa-users"></i>
@@ -38,8 +38,8 @@
             Favourites
           </a>
         </li>
-          --}}
-      @endif
+          */ ?>
+      <?php endif; ?>
 
       <li class="hidden dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -55,25 +55,26 @@
       </li>
     </ul>
   </div><!--/.nav-collapse -->
-  {{-- If user is not logged in --}}
-  @if ($currentUser)
+  <?php /* If user is not logged in */ ?>
+  <?php if($currentUser): ?>
     <div class="navbar-profile">
       <div class="navbar-profile-user">
-        <a href="{{ route('profile') }}">
-          <img class="navbar-profile-user-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
-          {{{ $currentUser->username }}}
+        <a href="<?php echo route('profile'); ?>">
+          <img class="navbar-profile-user-gravatar" src="<?php echo $currentUser->present()->gravatar; ?>" alt="<?php echo $currentUser->username; ?>">
+          <?php echo e($currentUser->username); ?>
+
         </a>
       </div>
 
       <div class="navbar-profile-messages">
-        @if( $currentUser->hasNewMessages() )
-          <a class="notify" href="{{ route('profile.conversations') }}">
-        @else
-          <a href="{{ route('profile.conversations') }}">
-        @endif
+        <?php if( $currentUser->hasNewMessages() ): ?>
+          <a class="notify" href="<?php echo route('profile.conversations'); ?>">
+        <?php else: ?>
+          <a href="<?php echo route('profile.conversations'); ?>">
+        <?php endif; ?>
           <i class="fa fa-envelope-o"></i>
           <span class="navbar-profile-unread-messages">
-            <span class="small">{{ $currentUser->getUnreadMessageCount() }}</span>
+            <span class="small"><?php echo $currentUser->getUnreadMessageCount(); ?></span>
           </span>
         </a>
       </div>
@@ -88,8 +89,8 @@
             <div class="dropdown-header">
               <div class="row">
                 <div class="col-xs-12">
-                  <img class="dropdown-header-gravatar" src="{{ $currentUser->present()->gravatar(40) }}" alt="{{ $currentUser->username }}">
-                  <h4 class="dropdown-header-username">{{{ $currentUser->username }}}</h4>
+                  <img class="dropdown-header-gravatar" src="<?php echo $currentUser->present()->gravatar(40); ?>" alt="<?php echo $currentUser->username; ?>">
+                  <h4 class="dropdown-header-username"><?php echo e($currentUser->username); ?></h4>
                 </div>
               </div>
             </div>
@@ -98,12 +99,12 @@
                 <div class="col-xs-12">
                   <ul>
                     <li>
-                      <a href="{{ route('profile') }}">
+                      <a href="<?php echo route('profile'); ?>">
                         Profile
                       </a>
                     </li>
                     <li>
-                      <a href="{{ route('follows') }}">
+                      <a href="<?php echo route('follows'); ?>">
                         People you follow
                       </a>
                     </li>
@@ -116,7 +117,7 @@
                 <div class="col-xs-12">
                   <ul>
                     <li>
-                      <a class="signout-button" href="{{ route('logout') }}">
+                      <a class="signout-button" href="<?php echo route('logout'); ?>">
                         <i class="fa fa-power-off"></i>
                       </a>
                     </li>
@@ -131,5 +132,5 @@
         </li>
       </ul>
     </div>
-  @endif
+  <?php endif; ?>
 </div>

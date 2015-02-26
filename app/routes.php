@@ -93,6 +93,37 @@ if(getenv('LAUNCH') === 'true') {
 		'uses' => 'ReviewsController@store'
 	]);
 
+	// Messages
+	Route::get('/profile/conversations', [
+		'before' => 'auth',
+		'as' => 'profile.conversations',
+		'uses' => 'ConversationsController@index'
+	]);
+
+	Route::get('/profile/conversations/{id}', [
+		'before' => 'auth',
+		'as' => 'profile.conversations.show',
+		'uses' => 'ConversationsController@show'
+	]);
+
+	Route::post('/profile/conversations/{id}', [
+		'before' => 'auth',
+		'as' => 'profile.conversation.post',
+		'uses' => 'ConversationsController@store_message'
+	]);
+
+	Route::post('/profile/conversations/{id}/add_user', [
+		'before' => 'auth',
+		'as' => 'conversation.add_user',
+		'uses' => 'ConversationsController@add_user'
+	]);
+
+	Route::get('/profile/messages/{id}', [
+		'before' => 'auth',
+		'as' => 'profile.conversation',
+		'uses' => 'MessagesController@conversation'
+	]);
+
 	// Skills
 	Route::put('/users/change_skills', [
 		'before' => 'auth',

@@ -1,0 +1,4 @@
+<li class="conversation__user">
+    <?php echo $user->username; ?>
+
+</li>

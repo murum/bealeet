@@ -16,9 +16,11 @@
                                 {{{ $currentUser->username }}}
                             </h1>
 
-                            <h2 class="user-profile-header-title-clan">
-                                {{-- Clan name / Searching for clan --}}
-                            </h2>
+                            @if( $currentUser->searching_team )
+                                <h2 class="user-profile-header-title-clan">
+                                    Searching for clan
+                                </h2>
+                            @endif
                         </div>
                     </div>
 
@@ -60,7 +62,7 @@
                                     <div class="user-profile-box-body">
                                         <ul class="row user-profile-messages">
                                             @foreach( $currentUser->getUnreadRecievedMessages(3) as $message )
-                                                @include('users.partials.profile.recieved-message')
+                                                @include('users.partials.profile.conversation')
                                             @endforeach
                                         </ul>
                                     </div>

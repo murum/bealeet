@@ -1,0 +1,18 @@
+<div class="form-group">
+    <label for="">Games</label>
+    <select class="selectpicker" name="games" id="filterGames">
+        <option value="" <?php echo isset($active_game) ? '' : 'selected'; ?>>All</option>
+        <?php foreach($games as $game): ?>
+            <option value="<?php echo $game->slug; ?>" <?php echo (isset($active_game) && $active_game->slug === $game->slug) ? 'selected' : ''; ?>>
+                <?php echo $game->name; ?>
+
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<?php /*
+<button type="submit" class="btn btn-block btn-info">
+    Filter
+</button>
+*/ ?>

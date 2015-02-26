@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateMessagesTable extends Migration {
+class CreateConversationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,13 @@ class CreateMessagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('messages', function(Blueprint $table)
+		Schema::create('conversations', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('sender_id');
-			$table->integer('conversation_id');
-			$table->text('message');
+			$table->string('name')->nullable();
 			$table->timestamps();
 		});
 	}
-
 
 	/**
 	 * Reverse the migrations.
@@ -30,7 +27,7 @@ class CreateMessagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('messages');
+		Schema::drop('conversations');
 	}
 
 }

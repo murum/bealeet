@@ -1,0 +1,56 @@
+<?php $__env->startSection('content'); ?>
+    <h1><?php echo $conversation->name; ?></h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-2">
+            <ul class="conversation-users">
+                <h2>
+                    Users
+                </h2>
+                <?php foreach($conversation->users as $user): ?>
+                    <?php echo $__env->make('conversations.partials.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php endforeach; ?>
+            </ul>
+
+            <h2>Add a user</h2>
+            <?php echo Form::open(['route' => ['conversation.add_user', $conversation->id]]); ?>
+
+
+            <div class="form-group">
+                <?php echo Form::text('username', null, ['placeholder' => 'Username...', 'class' => 'form-control']); ?>
+
+            </div>
+
+            <div class="form-group">
+                <?php echo Form::submit('Add user', ['class' => 'btn btn-sm btn-success']); ?>
+
+            </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            <h2>Messages</h2>
+            <ul class="row conversation-messages">
+                <?php foreach($conversation->messages as $message): ?>
+                    <?php echo $__env->make('conversations.partials.message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php endforeach; ?>
+            </ul>
+
+            <h2>Write a new message</h2>
+            <?php echo Form::open(['route' => ['profile.conversation.post', $conversation->id]]); ?>
+
+
+                <div class="form-group">
+                    <?php echo Form::textarea('message', null, ['placeholder' => 'Write your message...', 'class' => 'form-control']); ?>
+
+                </div>
+
+                <div class="form-group">
+                    <?php echo Form::submit('Send', ['class' => 'btn btn-sm btn-success']); ?>
+
+                </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

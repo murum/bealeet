@@ -1,0 +1,14 @@
+<div id="messages-container" class="flash">
+<?php if(Session::has('flash_notification.message')): ?>
+
+	<?php if(Session::has('flash_notification.overlay')): ?>
+    <?php echo $__env->make('partials/_modal', ['modalClass' => 'flash-modal', 'title' => 'Notice', 'body' => Session::get('flash_notification.message')], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+  <?php else: ?>
+    <div class="alert alert-<?php echo Session::get('flash_notification.level'); ?>">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <?php echo Session::get('flash_notification.message'); ?>
+
+    </div>
+  <?php endif; ?>
+<?php endif; ?>
+</div>

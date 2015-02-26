@@ -1,0 +1,26 @@
+<?php $__env->startSection('sidebar'); ?>
+    <div class="filter">
+        <h2>
+            <i class="fa fa-filter"></i>
+            Filter
+        </h2>
+        <?php echo $__env->make('players.partials.players-filter', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <h2>More filters to come</h2>
+    </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Find Players</h1>
+
+            <div class="row">
+                <?php foreach($players as $player): ?>
+                    <?php echo $__env->make('players.partials.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master_sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

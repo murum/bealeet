@@ -1,25 +1,25 @@
 <?php namespace Bealeet\Users;
 
-trait MessageTrait {
+trait ConversationTrait {
 
 	/**
-	 * Get the list of messages the users has sent.
+	 * Conversation relationship
 	 *
 	 * @return mixed
 	 */
-	public function sendedMessages()
+	public function conversations()
 	{
-		return $this->hasMany('\Bealeet\Users\Message', 'sender_id');
+		return $this->belongToMany('Bealeet\Conversations\Conversation');
 	}
 
 	/**
-	 * Get the list of messages the user has recieved.
+	 * Conversation Message relationship
 	 *
 	 * @return mixed
 	 */
-	public function recievedMessages()
+	public function messages()
 	{
-		return $this->hasMany('\Bealeet\Users\Message', 'reciever_id');
+		return $this->hasMany('Bealeet\Conversations\Message');
 	}
 
 	/**
@@ -29,8 +29,9 @@ trait MessageTrait {
 	 */
 	public function hasNewMessages()
 	{
-		$messages = $this->recievedMessages()->whereRead(false)->count();
-		return ($messages > 0);
+//		$messages = $this->recievedMessages()->whereRead(false)->count();
+//		return ($messages > 0);
+		return false;
 	}
 
 
@@ -56,6 +57,7 @@ trait MessageTrait {
 	 * @return mixed
 	 */
 	public function getUnreadMessageCount() {
-		return $this->recievedMessages()->whereRead(false)->count();
+//		return $this->recievedMessages()->whereRead(false)->count();
+		return 0;
 	}
 }

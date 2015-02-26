@@ -1,4 +1,4 @@
-<?php namespace Bealeet\Users;
+<?php namespace Bealeet\Conversations;
 
 use Laracasts\Presenter\Presenter;
 

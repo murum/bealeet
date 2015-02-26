@@ -1,0 +1,40 @@
+<div class="col-xs-12 col-sm-4">
+    <div class="player">
+        <div class="player-header player-header-<?php echo $player->favoriteGame()->slug; ?>"></div>
+        <h2>
+            <?php echo e($player->username); ?>
+
+        </h2>
+        <p class="text-smaller">
+            <?php echo e($player->description); ?>
+
+        </p>
+
+        <?php if ( ! ($player->skills->isEmpty())): ?>
+            <ul class="player-skills">
+                <?php foreach($player->groupedSkills() as $skill): ?>
+                    <li
+                            data-skill="<?php echo $skill->pivot->skill_id; ?>"
+                            data-amount="<?php echo e($skill->count - 1); ?>"
+                            class="player-skills-item">
+                        <span class="player-skills-item-name"><?php echo e($skill->name); ?></span>
+                        <span class="player-skills-item-value"><?php echo e($skill->count - 1); ?></span>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+
+        <div class="player-buttons">
+            <div class="row">
+                <div class="col-xs-6">
+                    <?php echo $__env->make('players.partials.player-follow', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
+
+                <div class="col-xs-6">
+                    <a class="btn btn-block btn-info-outline" href="<?php echo route('user_profile', $player->id); ?>">
+                        Profile <i class="fa fa-angle-double-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

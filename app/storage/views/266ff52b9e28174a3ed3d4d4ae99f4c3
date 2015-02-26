@@ -1,0 +1,21 @@
+<?php if($player->isFollowedBy($currentUser)): ?>
+    <?php echo Form::open(['method' => 'DELETE', 'route' => ['unfollow', $player->id]]); ?>
+
+    <?php echo Form::hidden('userIdToUnfollow', $player->id); ?>
+
+    <button type="submit" class="btn block btn-danger-outline">
+        Unfollow
+    </button>
+    <?php echo Form::close(); ?>
+
+<?php else: ?>
+    <?php echo Form::open(['route' => 'follow']); ?>
+
+    <?php echo Form::hidden('userIdToFollow', $player->id); ?>
+
+    <button type="submit" class="btn btn-block btn-primary-outline">
+        Follow
+    </button>
+    <?php echo Form::close(); ?>
+
+<?php endif; ?>
