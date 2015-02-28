@@ -1,6 +1,7 @@
 <?php namespace Bealeet\Users;
 
 use Bealeet\Skills\Skill;
+use Illuminate\Support\Collection;
 
 trait SkillTrait {
 
@@ -32,13 +33,24 @@ trait SkillTrait {
 	 **/
 	public function groupedSkills()
 	{
-		return $this->skills()
-			->groupBy('skill_id')
-			->orderBy('count', 'DESC')
-			->get([
-				\DB::raw('COUNT(skill_id) as count'),
-				'name'
-			]);
+		$return_skills = new Collection();
+
+		$skills = $this->skills()
+		               ->groupBy('skill_id')
+		               ->orderBy('count', 'DESC')
+		               ->get([
+			               \DB::raw('COUNT(skill_id) as count'),
+			               'skill_id',
+			               'game_id',
+			               'name'
+		               ]);
+		foreach($skills as $skill) {
+			if($skill->game_id == $this->favoriteGame()->id) {
+				$return_skills[] = $skill;
+			}
+		}
+
+		return $return_skills;
 	}
 
 	/**
@@ -68,7 +80,14 @@ trait SkillTrait {
 	 */
 	public function listSkills()
 	{
-		return Skill::all()->lists('name', 'id');
+		$return_skills = new Collection();
+		$skills = Skill::all();
+		foreach($skills as $skill) {
+			if($skill->game_id == $this->favoriteGame()->id) {
+				$return_skills[] = $skill->name;
+			}
+		}
+		return $return_skills;
 	}
 
 	/**

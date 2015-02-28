@@ -10,6 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+use Bealeet\Games\Game;
+
 if(getenv('LAUNCH') === 'true') {
 	Route::get('/', array('as' => 'launch', 'uses' => 'LaunchController@index'));
 	Route::post('/', array('as' => 'launch', 'uses' => 'LaunchController@store'));

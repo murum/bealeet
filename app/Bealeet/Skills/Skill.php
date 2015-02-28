@@ -13,7 +13,7 @@ class Skill extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name'];
+	protected $fillable = ['game_id', 'name'];
 
 	/**
 	 * The database table used by the model.
