@@ -16,9 +16,11 @@
                                 {{{ $user->username }}}
                             </h1>
 
-                            <h2 class="user-profile-header-title-clan">
-                                {{-- Clan name / Searching for clan--}}
-                            </h2>
+                            @if( $user->searching_team )
+                                <h2 class="user-profile-header-title-clan">
+                                    Searching for clan
+                                </h2>
+                            @endif
                         </div>
                     </div>
 

@@ -81,20 +81,29 @@
                                     </div>
 
                                     <div class="user-profile-box-body">
-                                        @if( $currentUser->hasSkills() )
-                                            <ul class="user-profile-skills">
-                                                @foreach($currentUser->groupedSkills() as $skill)
-                                                    <li data-amount="{{{ $skill->count - 1 }}}"
-                                                        class="user-profile-skills-item plusable">
-                                                        {{{ $skill->name }}}
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @else
-                                            <h3>You've still not added any skills</h3>
-                                        @endif
+                                        @if( $currentUser->hasAFavoriteGame() )
+                                            @if( $currentUser->hasSkills() )
+                                                <ul class="user-profile-skills">
+                                                    @foreach($currentUser->groupedSkills() as $skill)
+                                                        <li data-amount="{{{ $skill->count - 1 }}}"
+                                                            class="user-profile-skills-item plusable">
+                                                            {{{ $skill->name }}}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @else
+                                                <h3>You've still not added any skills</h3>
+                                            @endif
 
-                                        @include('users.partials.add-skill-form')
+                                            @include('users.partials.add-skill-form')
+                                        @else
+                                            <div class="alert alert-info">
+                                                You need to have a favorite game to handle your skills.
+                                                <br />
+                                                <br />
+                                                To add a favorite game please add a game to your profile.
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
