@@ -1,12 +1,30 @@
 <?php $__env->startSection('content'); ?>
     <h1>Conversations</h1>
-    <div class="user-profile-box user-profile-box-conversations">
-        <div class="user-profile-box-body">
-            <ul class="row user-profile-conversations">
-                <?php foreach( $conversations as $conversation ): ?>
-                    <?php echo $__env->make('users.partials.profile.conversation', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                <?php endforeach; ?>
-            </ul>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3">
+            <?php echo Form::open(['route' => 'conversations.store']); ?>
+
+                <div class="form-group">
+                    <?php echo Form::text('username', null, ['placeholder' => 'Username', 'class' => 'form-control']); ?>
+
+                </div>
+                <div class="form-group">
+                    <?php echo Form::submit('Start a new conversation', ['class' =>'btn btn-block btn-success']); ?>
+
+                </div>
+            <?php echo Form::close(); ?>
+
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <div class="user-profile-box user-profile-box-conversations">
+                <div class="user-profile-box-body">
+                    <ul class="row list-group user-profile-conversations">
+                        <?php foreach( $conversations as $conversation ): ?>
+                            <?php echo $__env->make('users.partials.profile.conversation', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

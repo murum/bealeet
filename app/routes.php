@@ -106,6 +106,12 @@ if(getenv('LAUNCH') === 'true') {
 		'uses' => 'ConversationsController@show'
 	]);
 
+	Route::post('/profile/conversations/', [
+		'before' => 'auth',
+		'as' => 'conversations.store',
+		'uses' => 'ConversationsController@store'
+	]);
+
 	Route::post('/profile/conversations/{id}', [
 		'before' => 'auth',
 		'as' => 'profile.conversation.post',
@@ -116,6 +122,12 @@ if(getenv('LAUNCH') === 'true') {
 		'before' => 'auth',
 		'as' => 'conversation.add_user',
 		'uses' => 'ConversationsController@add_user'
+	]);
+
+	Route::post('/profile/conversations/{id}/leave', [
+		'before' => 'auth',
+		'as' => 'conversation.leave',
+		'uses' => 'ConversationsController@leave'
 	]);
 
 	Route::get('/profile/messages/{id}', [

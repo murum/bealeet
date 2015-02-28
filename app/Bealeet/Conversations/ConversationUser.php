@@ -5,26 +5,21 @@ use Laracasts\Commander\Events\EventGenerator;
 use Laracasts\Presenter\PresentableTrait;
 
 /**
- * Class Message
+ * Class ConversationUser
  * @package Bealeet\Conversation
  */
-class Message extends Eloquent {
+class ConversationUser extends Eloquent {
 
-	use EventGenerator, PresentableTrait;
+	protected $primaryKey = null;
+	public $incrementing = false;
 
-	/**
-	 * Which fields may be mass assigned?
-	 *
-	 * @var array
-	 */
-	protected $fillable = ['writer_id', 'conversation_id', 'message'];
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'conversation_message';
+	protected $table = 'conversation_user';
 
 	/**
 	 * Conversation relationship
@@ -32,7 +27,7 @@ class Message extends Eloquent {
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function conversation() {
-		return $this->belongsTo('\Bealeet\Conversations\Conversation');
+		return $this->belongsTo('Bealeet\Conversations\Conversation');
 	}
 
 
@@ -41,8 +36,8 @@ class Message extends Eloquent {
 	 *
 	 * @return $this
 	 */
-	public function writer() {
-		return $this->belongsTo('\Bealeet\Users\User');
+	public function user() {
+		return $this->belongsTo('Bealeet\Users\User');
 	}
 
 }

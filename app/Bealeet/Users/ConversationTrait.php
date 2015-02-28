@@ -1,5 +1,7 @@
 <?php namespace Bealeet\Users;
 
+use Illuminate\Support\Collection;
+
 trait ConversationTrait {
 
 	/**
@@ -9,7 +11,7 @@ trait ConversationTrait {
 	 */
 	public function conversations()
 	{
-		return $this->belongToMany('Bealeet\Conversations\Conversation');
+		return $this->belongsToMany('Bealeet\Conversations\Conversation');
 	}
 
 	/**
@@ -27,11 +29,9 @@ trait ConversationTrait {
 	 *
 	 * @return bool
 	 */
-	public function hasNewMessages()
+	public function hasUnreadConversations()
 	{
-//		$messages = $this->recievedMessages()->whereRead(false)->count();
-//		return ($messages > 0);
-		return false;
+		return ($this->getUnreadConversationsCount() > 0);
 	}
 
 
@@ -56,8 +56,15 @@ trait ConversationTrait {
 	 *
 	 * @return mixed
 	 */
-	public function getUnreadMessageCount() {
-//		return $this->recievedMessages()->whereRead(false)->count();
-		return 0;
+	public function getUnreadConversationsCount() {
+		$conversations = $this->conversations()->get();
+		$unreadConversations = new Collection();
+		foreach($conversations as $conversation) {
+			if($conversation->hasUnreadMessages()) {
+				$unreadConversations[] = $conversation;
+			}
+		}
+
+		return $unreadConversations->count();
 	}
 }

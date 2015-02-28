@@ -56,12 +56,12 @@
                             <div data-match-height="profile-upper-box" class="modal-box">
                                 <div class="user-profile-box user-profile-box-messages">
                                     <div class="user-profile-box-header">
-                                        <h2>Messages</h2>
+                                        <h2>Conversations</h2>
                                     </div>
 
                                     <div class="user-profile-box-body">
-                                        <ul class="row user-profile-messages">
-                                            @foreach( $currentUser->getUnreadRecievedMessages(3) as $message )
+                                        <ul class="list-group user-profile-messages">
+                                            @foreach($currentUser->conversations as $conversation)
                                                 @include('users.partials.profile.conversation')
                                             @endforeach
                                         </ul>

@@ -66,14 +66,14 @@
       </div>
 
       <div class="navbar-profile-messages">
-        @if( $currentUser->hasNewMessages() )
+        @if( $currentUser->hasUnreadConversations() )
           <a class="notify" href="{{ route('profile.conversations') }}">
         @else
           <a href="{{ route('profile.conversations') }}">
         @endif
           <i class="fa fa-envelope-o"></i>
           <span class="navbar-profile-unread-messages">
-            <span class="small">{{ $currentUser->getUnreadMessageCount() }}</span>
+            <span class="small">{{ $currentUser->getUnreadConversationsCount() }}</span>
           </span>
         </a>
       </div>

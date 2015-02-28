@@ -24,6 +24,12 @@
                 {{ Form::submit('Add user', ['class' => 'btn btn-sm btn-success']) }}
             </div>
             {{ Form::close() }}
+
+            {{ Form::open(['route' => ['conversation.leave', $conversation->id]]) }}
+                <div class="form-group">
+                    {{ Form::submit('Leave conversation', ['class' => 'btn btn-sm btn-danger']) }}
+                </div>
+            {{ Form::close() }}
         </div>
         <div class="col-xs-12 col-sm-10">
             <h2>Messages</h2>

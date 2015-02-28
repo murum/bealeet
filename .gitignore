@@ -15,6 +15,8 @@ Thumbs.db
 .env.*.php
 .env.php
 
+app/storage/views
+
 ### Code ception ###
 tests/_data/db.sqlite_snapshot
 tests/_output/*

@@ -2,7 +2,9 @@
 
 use Laracasts\Presenter\Presenter;
 
-class MessagePresenter extends Presenter {
+class ConversationPresenter extends Presenter {
+
+    use ConversationRepository;
 
     public function getMessagePreview($length = '80') {
         $text = $this->message;
@@ -18,6 +20,7 @@ class MessagePresenter extends Presenter {
     }
 
     public function readClass() {
-        return ($this->read) ? 'read' : 'unread';
+        $conversation = Conversation::find($this->id);
+        return ($conversation->hasUnreadMessages()) ? 'unread' : 'read';
     }
 }

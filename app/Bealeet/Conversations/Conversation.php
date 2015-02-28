@@ -10,7 +10,7 @@ use Laracasts\Presenter\PresentableTrait;
  */
 class Conversation extends Eloquent {
 
-	use EventGenerator, PresentableTrait;
+	use EventGenerator, PresentableTrait, ConversationRepository;
 
 	/**
 	 * Which fields may be mass assigned?
@@ -30,7 +30,7 @@ class Conversation extends Eloquent {
 	/**
 	 * @var string
 	 */
-	protected $presenter = 'Bealeet\Conversations\MessagePresenter';
+	protected $presenter = 'Bealeet\Conversations\ConversationPresenter';
 
 	/**
 	 * Messages relationship
@@ -38,7 +38,7 @@ class Conversation extends Eloquent {
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function messages() {
-		return $this->hasMany('Bealeet\Conversations\Message', 'conversation_id');
+		return $this->hasMany('Bealeet\Conversations\Message');
 	}
 
 

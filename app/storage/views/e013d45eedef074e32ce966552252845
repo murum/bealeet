@@ -67,14 +67,14 @@
       </div>
 
       <div class="navbar-profile-messages">
-        <?php if( $currentUser->hasNewMessages() ): ?>
+        <?php if( $currentUser->hasUnreadConversations() ): ?>
           <a class="notify" href="<?php echo route('profile.conversations'); ?>">
         <?php else: ?>
           <a href="<?php echo route('profile.conversations'); ?>">
         <?php endif; ?>
           <i class="fa fa-envelope-o"></i>
           <span class="navbar-profile-unread-messages">
-            <span class="small"><?php echo $currentUser->getUnreadMessageCount(); ?></span>
+            <span class="small"><?php echo $currentUser->getUnreadConversationsCount(); ?></span>
           </span>
         </a>
       </div>
