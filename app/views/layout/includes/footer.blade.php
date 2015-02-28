@@ -5,6 +5,10 @@
                 <div class="pull-left">
                   <p class="footer-copy">
                       &copy; Be A Leet 2014-{{{ \Carbon\Carbon::now()->year }}}
+
+                      .
+
+                      This site is not affiliated with Valve Corporation
                   </p>
                 </div>
                 <div class="pull-right">
