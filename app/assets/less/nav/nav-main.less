@@ -5,7 +5,7 @@ div.navbar {
   bottom: 0;
   z-index: 1000;
 
-  width: 90px;
+  width: 215px;
   min-height: 100%;
   max-height: 100%;
   border: 0;
@@ -22,12 +22,14 @@ div.navbar {
   a.navbar-brand {
     float: left;
 
-    margin: 15px 0 25px;
-    padding: 0;
+    margin: 0;
+    padding: 15px 0;
     height: auto;
     width: 100%;
 
     text-align: center;
+
+    background: @lightest;
 
     img {
       float: none;
@@ -35,37 +37,67 @@ div.navbar {
   }
 
   div.navbar-nav {
-    background-color: @dark-light;
-
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
 
-      width: 90px;
+      width: 215px;
 
       li {
-        border-bottom: 3px solid @dark;
+
+        &.divider {
+          height: 1px;
+          background: @darker;
+          margin: 15px 30px;
+        }
+
+        .navbar__unread {
+          float: right;
+          background: @brand-primary;
+          color: @lightest;
+
+          height: 26px;
+          line-height: 26px;
+          width: 26px;
+          text-align: center;
+
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+
+          margin-right: 15px;
+          font-size: .875em;
+        }
 
         a {
-          height: 70px;
-          padding: 10px 0;
+          height: 36px;
+          padding: 5px 0 5px 30px;
+          margin: 5px 0;
+
+          line-height: 26px;
 
           display: block;
 
           color: @dark-lighter;
 
+          text-align: left;
+
           &:hover {
             text-decoration: none;
 
-            color: @light;
-            background: @brand-info;
+            color: @dark;
+            background: @lighter;
+
+            padding-left: 25px;
+            border-left: 5px solid @brand-primary;
           }
 
           i {
-            font-size: 2em;
-
-            display: block;
+            font-size: 1.5em;
+            line-height: 26px;
+            float: left;
+            margin-right: 20px;
           }
         }
       }
@@ -74,16 +106,12 @@ div.navbar {
 
   div.navbar-profile {
     float: left;
-    position: fixed;
-    bottom: 0;
 
-    padding: 15px 0 0;
+    padding: 15px 0 15px 20px;
 
-    width: 90px;
+    width: 215px;
 
     text-align: center;
-
-    background: @dark-light;
 
     div.navbar-profile-user {
       margin: 0 0 15px;
@@ -103,8 +131,12 @@ div.navbar {
         border-radius: 50%;
 
         margin: 0 auto;
+        float: left;
+      }
 
-        display: block;
+      .navbar-profile-user-meta {
+        float: left;
+        padding-left: 11px;
       }
     }
 
@@ -127,12 +159,6 @@ div.navbar {
         i {
           display: block;
           font-size: 1.5em;
-        }
-
-        span.navbar-profile-messages-unread {
-          display: block;
-          text-align: center;
-          font-size: 1em;
         }
       }
     }

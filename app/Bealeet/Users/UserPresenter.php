@@ -10,7 +10,7 @@ class UserPresenter extends Presenter {
      * @param int $size
      * @return string
      */
-    public function gravatar($size = 50)
+    public function gravatar($size = 40)
     {
         $email = md5($this->email);
 
