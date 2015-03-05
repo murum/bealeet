@@ -4,6 +4,7 @@
 // to tablets.
 
 @media (min-width: @screen-sm-min) {
+
   body > div.container {
     margin-left: 230px;
     margin-right: 0;
@@ -11,6 +12,26 @@
     margin-top: 30px;
 
     max-width: 1030px;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+
+    body.start{
+      width: 100%;
+      height: 100%;
+
+       > div.container {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+    }
   }
 }
 

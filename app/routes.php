@@ -16,11 +16,15 @@ if(getenv('LAUNCH') === 'true') {
 	Route::get('/', array('as' => 'launch', 'uses' => 'LaunchController@index'));
 	Route::post('/', array('as' => 'launch', 'uses' => 'LaunchController@store'));
 } else {
-	Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
+	Route::get('/', array('as' => 'home', 'before' => 'auth', 'uses' => 'HomeController@index'));
 
 	// Authentication
 	Route::get('/register', array('as' => 'register', 'uses' => 'UsersController@create'));
 	Route::post('/register', array('as' => 'user.store', 'uses' => 'UsersController@store'));
+	Route::get('/forgot-password', array('as' => 'forgot_password', 'uses' => 'UsersController@getForgotPassword'));
+	Route::post('/forgot-password', array('as' => 'forgot_password', 'uses' => 'UsersController@postForgotPassword'));
+	Route::get('/password/reset/{token}', array('as' => 'password.reset', 'uses' => 'UsersController@getResetPassword'));
+	Route::post('/password/reset/{token}', array('as' => 'password.reset', 'uses' => 'UsersController@postResetPassword'));
 	Route::get('/logout', array('as' => 'logout', 'uses' => 'SessionsController@destroy'));
 	Route::get('/login', array('as' => 'login', 'uses' => 'SessionsController@create'));
 	Route::post('/login', array('as' => 'login', 'uses' => 'SessionsController@store'));

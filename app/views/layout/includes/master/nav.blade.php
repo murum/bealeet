@@ -23,94 +23,78 @@
 
     <div class="navbar-nav">
         <ul>
-            {{-- If user is not logged in --}}
-            @if (!$currentUser)
-                <li>
-                    <a href="{{ route('register') }}">
-                        <i class="fa fa-user"></i>
-                        Register
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('login') }}">
-                        <i class="fa fa-sign-in"></i>
-                        Log in
-                    </a>
-                </li>
-            @else
-                <li>
-                    <a href="{{ route('profile.conversations') }}">
-                        <i class="fa fa-comment"></i>
-                        Messages
-                        @if($currentUser->hasUnreadConversations())
-                            <span class="navbar__unread">
-                                {{ $currentUser->getUnreadConversationsCount() }}
-                            </span>
-                        @endif
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('find_players') }}">
-                        <i class="fa fa-search-plus"></i>
-                        Following
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('find_players') }}">
-                        <i class="fa fa-search-plus"></i>
-                        Followers
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('profile.conversations') }}">
+                    <i class="bealeet-messages"></i>
+                    Messages
+                    @if($currentUser->hasUnreadConversations())
+                        <span class="navbar__unread">
+                            {{ $currentUser->getUnreadConversationsCount() }}
+                        </span>
+                    @endif
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('find_players') }}">
+                    <i class="bealeet-following"></i>
+                    Following
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('find_players') }}">
+                    <i class="bealeet-followers"></i>
+                    Followers
+                </a>
+            </li>
 
-                <li class="divider"></li>
+            <li class="divider"></li>
 
-                <li>
-                    <a href="{{ route('find_players') }}">
-                        <i class="fa fa-search-plus"></i>
-                        Flow
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('find_players') }}">
+                    <i class="bealeet-flow"></i>
+                    Flow
+                </a>
+            </li>
 
-                <li>
-                    <a href="{{ route('find_players') }}">
-                        <i class="fa fa-search-plus"></i>
-                        Find players
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('find_players') }}">
+                    <i class="bealeet-playerfind"></i>
+                    Find players
+                </a>
+            </li>
 
-                <li>
-                    <a href="{{ route('find_players') }}">
-                        <i class="fa fa-search-plus"></i>
-                        Find teams
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('find_players') }}">
+                    <i class="bealeet-teamfind"></i>
+                    Find teams
+                </a>
+            </li>
 
-                <li class="divider"></li>
+            <li class="divider"></li>
 
-                <li>
-                    <a href="{{ route('logout') }}">
-                        <i class="fa fa-power-off"></i>
-                        Log out
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('logout') }}">
+                    <i class="bealeet-logout"></i>
+                    Log out
+                </a>
+            </li>
 
-                <li class="divider"></li>
+            <li class="divider"></li>
 
-                {{--
-                <li>
-                  <a href="">
-                    <i class="fa fa-users"></i>
-                    Find clan
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <i class="fa fa-star"></i>
-                    Favourites
-                  </a>
-                </li>
-                  --}}
-            @endif
+            {{--
+            <li>
+              <a href="">
+                <i class="fa fa-users"></i>
+                Find clan
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="fa fa-star"></i>
+                Favourites
+              </a>
+            </li>
+              --}}
 
             <li class="hidden dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>

@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'bealeet';
+  src: url('../fonts/bealeet.eot?5063086');
+  src: url('../fonts/bealeet.eot?5063086#iefix') format('embedded-opentype'),
+  url('../fonts/bealeet.woff?5063086') format('woff'),
+  url('../fonts/bealeet.ttf?5063086') format('truetype'),
+  url('../fonts/bealeet.svg?5063086#bealeet') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'bealeet';
+    src: url('../fonts/bealeet.svg?5063086#bealeet') format('svg');
+  }
+}
+*/
+
+[class^="bealeet-"]:before, [class*=" bealeet-"]:before {
+  font-family: "bealeet";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.bealeet-messages:before { content: '\e800'; } /* '' */
+.bealeet-lock:before { content: '\e801'; } /* '' */
+.bealeet-followers:before { content: '\e802'; } /* '' */
+.bealeet-mail:before { content: '\e803'; } /* '' */
+.bealeet-following:before { content: '\e804'; } /* '' */
+.bealeet-playerfind:before { content: '\e805'; } /* '' */
+.bealeet-teamfind:before { content: '\e806'; } /* '' */
+.bealeet-cog:before { content: '\e807'; } /* '' */
+.bealeet-rank:before { content: '\e808'; } /* '' */
+.bealeet-profile:before { content: '\e809'; } /* '' */
+.bealeet-profile-ring:before { content: '\e80a'; } /* '' */
+.bealeet-logout:before { content: '\e80b'; } /* '' */
+.bealeet-flow:before { content: '\e80c'; } /* '' */

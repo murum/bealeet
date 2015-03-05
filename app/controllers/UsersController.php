@@ -6,11 +6,15 @@ use Bealeet\Registration\RegisterUserCommand;
 use Bealeet\Games\ChangeUserGamesCommand;
 use Bealeet\Users\AddUserSkillCommand;
 use Bealeet\Users\ChangeUserSearchTeamStatusCommand;
+use Bealeet\Users\PasswordToken;
 use Bealeet\Users\PrimaryUserGameCommand;
 use Bealeet\Users\RemoveUserGameCommand;
 use Bealeet\Users\RemoveUserSkillCommand;
 use Bealeet\Users\User;
 use Bealeet\Users\UserRepository;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use \Illuminate\Support\Facades\Mail;
 
 class UsersController extends \BaseController {
 
@@ -40,6 +44,73 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		//
+	}
+
+	public function getForgotPassword() {
+		return View::make('users.forgot_password');
+	}
+
+	public function postForgotPassword() {
+		$input = Input::only('email');
+
+		$user = User::whereEmail($input['email'])->first();
+		if($user) {
+			$passwordToken = PasswordToken::create([
+				'token' => Str::random(32),
+				'user_id' => $user->id
+			]);
+
+			Mail::send('emails.auth.forgot_password', ['password_token' => $passwordToken, 'user' => $user], function($message) use ($user) {
+				$message->to($user->email, $user->username)->subject('Be A Leet - Reset your password');
+			});
+
+			Flash::success('An email has been sent with link to reset your password');
+			return View::make('users.forgot_password');
+
+		} else {
+			Flash::error('A user with the given email doesn\'t exist');
+			return View::make('users.forgot_password');
+		}
+	}
+
+	public function getResetPassword($token) {
+		$input_token = $token;
+		$token = PasswordToken::whereToken($token)->first();
+		if($token->isValid()) {
+			$token = $input_token;
+			return View::make('users.reset_password', compact('token'));
+		} else {
+			Flash::error('The reset token is not valid');
+			return Redirect::route('forgot_password');
+		}
+	}
+
+	public function postResetPassword($token) {
+		$rules = [
+			'password' => 'required|confirmed',
+			'password_confirmation' => 'required'
+		];
+
+		$input = Input::only(['password', 'password_confirmation']);
+
+		$validator = Validator::make($input, $rules);
+
+		if($validator->fails()) {
+			Flash::error('Validation failed, be sure you enter the same password');
+			return Redirect::back()->withInput();
+		} else {
+			$token = PasswordToken::whereToken($token)->first();
+			$user = User::find($token->user_id);
+			$user->password = $input['password'];
+
+			if($user->save()) {
+				Flash::success('Your password was updated');
+				return Redirect::route('login');
+			} else {
+				Flash::error('An error occurred, please try again!');
+				return Redirect::route('login');
+			}
+		}
 	}
 
 	/**
