@@ -5,7 +5,9 @@
         <div class="col-xs-12">
             <h1>Find Players</h1>
 
-            @include('players.partials.players-filter')
+            {{--
+                @include('players.partials.players-filter')
+            --}}
 
             <div class="row">
                 @foreach($players as $player)

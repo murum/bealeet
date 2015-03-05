@@ -232,7 +232,26 @@ Bealeet.findPlayers = {
     }
 };
 
+Bealeet.fadeoutLinks = {
+    init: function(){
+        this.main();
+    },
+    main: function() {
+
+        $('a').click(function () {
+            if( ($(this).attr('target') != '_blank') && ($(this).attr('href').indexOf('mailto') == -1) && ($(this).attr('href').indexOf('#') == -1) ){
+
+                $('div.container').fadeOut(400);
+
+            }
+        });
+
+    }
+};
+
 $(function() {
+    Bealeet.fadeoutLinks.init();
+
     Bealeet.toggle.init();
     Bealeet.chosen.init();
     Bealeet.selectpicker.init();
@@ -241,4 +260,10 @@ $(function() {
     Bealeet.skills.init();
 
     Bealeet.findPlayers.init();
+
+    $(document).ready(function() {
+        $("div.container").animate({
+            opacity: 1
+        }, 400);
+    });
 });

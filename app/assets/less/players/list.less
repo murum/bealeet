@@ -1,53 +1,69 @@
 .player {
-  background: @light;
-  padding: 15px;
+  background: @lightest;
+  position: relative;
 
-  .player-header {
-    margin: -15px;
+  .player__header {
+    .row;
 
-    height: 141px;
+    background: @light;
+    margin: 0;
+    padding: 10px 20px;
 
-    &.player-header-cs-go {
-      background: @light url('/images/player-header-cs-go.jpg') no-repeat;
+    img {
+      border-radius: 50%;
     }
-    &.player-header-dota-2 {
-      background: @light url('/images/player-header-dota.jpg') no-repeat;
+
+    h3 {
+      color: @brand-primary;
+      font-size: 1em;
+      font-weight: 300;
+
+      margin-left: 12px;
+      margin-top: 12px;
     }
   }
 
-  .player-skills {
-    margin: 15px -15px;
-    border-top: 1px solid @light-darker;
-    border-bottom: 1px solid @light-darker;
+  .player__content {
+    color: @brand-info;
+    padding: 10px 20px;
 
-    li {
+    .player__content__game {
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 1.5em;
+      text-transform: uppercase;
+    }
+
+    .player__content__stats {
       .row;
-      margin: 0;
-      padding: 3px 15px;
+      font-weight: 300;
+      margin: 0 0 45px;
 
-      .player-skills-item-name {
-        width: 50%;
-        float: left;
-        font-weight: bold;
-
-        &:after {
-          content: ':';
-        }
+      li {
+        margin: .875em 0;
       }
-
-      .player-skills-item-value {
-        width: 50%;
-        float: left;
-      }
-    }
-
-    li:nth-child(2n+1) {
-
-      background: @lighter;
     }
   }
 
-  .player-buttons {
-    margin: 15px 0 0;
+  .player__buttons {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
+    .button {
+      border-bottom: none;
+    }
+
+    .player__buttons__follow {
+      .button {
+        border-left: none;
+      }
+    }
+
+    .player__buttons__profile {
+      .button {
+        border-right: none;
+      }
+    }
   }
 }

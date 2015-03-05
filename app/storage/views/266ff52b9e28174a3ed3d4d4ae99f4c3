@@ -3,8 +3,8 @@
 
     <?php echo Form::hidden('userIdToUnfollow', $player->id); ?>
 
-    <button type="submit" class="btn block btn-danger-outline">
-        Unfollow
+    <button type="submit" class="btn-block button">
+        - Unfollow
     </button>
     <?php echo Form::close(); ?>
 
@@ -13,8 +13,8 @@
 
     <?php echo Form::hidden('userIdToFollow', $player->id); ?>
 
-    <button type="submit" class="btn btn-block btn-primary-outline">
-        Follow
+    <button type="submit" class="btn-block button">
+        + Follow
     </button>
     <?php echo Form::close(); ?>
 
