@@ -27,9 +27,23 @@ class FollowsController extends \BaseController {
 	{
 		$user = $this->userRepository->findById(Auth::user()->id);
 
-		$follows = $this->userRepository->findFollowedUsers($user);
+		$users = $this->userRepository->findFollowedUsers($user);
 
-		return View::make('follow.index', compact('follows'));
+		return View::make('follow.index', compact('users'));
+	}
+
+	/**
+	 * List users you are followed by
+	 *
+	 * @return mixed
+	 */
+	public function followers()
+	{
+		$user = $this->userRepository->findById(Auth::user()->id);
+
+		$users = $this->userRepository->findFollowers($user);
+
+		return View::make('follow.followers', compact('users'));
 	}
 
 	/**

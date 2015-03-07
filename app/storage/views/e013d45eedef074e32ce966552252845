@@ -1,5 +1,5 @@
 <div class="navbar">
-    <a class="navbar-brand" rel="home" href="<?php echo route('home'); ?>">
+    <a class="navbar-brand" rel="home" href="<?php echo route('flow'); ?>">
         <img src="/images/logo.png"/>
     </a>
 
@@ -37,13 +37,13 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo route('find_players'); ?>">
+                <a href="<?php echo route('follows'); ?>">
                     <i class="bealeet-following"></i>
                     Following
                 </a>
             </li>
             <li>
-                <a href="<?php echo route('find_players'); ?>">
+                <a href="<?php echo route('followers'); ?>">
                     <i class="bealeet-followers"></i>
                     Followers
                 </a>
@@ -52,7 +52,7 @@
             <li class="divider"></li>
 
             <li>
-                <a href="<?php echo route('find_players'); ?>">
+                <a href="<?php echo route('flow'); ?>">
                     <i class="bealeet-flow"></i>
                     Flow
                 </a>
@@ -66,7 +66,7 @@
             </li>
 
             <li>
-                <a href="<?php echo route('find_players'); ?>">
+                <a href="<?php echo route('find.teams'); ?>">
                     <i class="bealeet-teamfind"></i>
                     Find teams
                 </a>

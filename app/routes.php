@@ -16,7 +16,7 @@ if(getenv('LAUNCH') === 'true') {
 	Route::get('/', array('as' => 'launch', 'uses' => 'LaunchController@index'));
 	Route::post('/', array('as' => 'launch', 'uses' => 'LaunchController@store'));
 } else {
-	Route::get('/', array('as' => 'home', 'before' => 'auth', 'uses' => 'HomeController@index'));
+	Route::get('/', array('as' => 'flow', 'before' => 'auth', 'uses' => 'HomeController@flow'));
 
 	// Authentication
 	Route::get('/register', array('as' => 'register', 'uses' => 'UsersController@create'));
@@ -60,10 +60,16 @@ if(getenv('LAUNCH') === 'true') {
 		'uses' => 'FollowsController@create'
 	]);
 
-	Route::get('/follows', [
+	Route::get('/following', [
 		'before' => 'auth',
 		'as' => 'follows',
 		'uses' => 'FollowsController@index'
+	]);
+
+	Route::get('/followers', [
+		'before' => 'auth',
+		'as' => 'followers',
+		'uses' => 'FollowsController@followers'
 	]);
 
 	Route::delete('/users/{id}/follow', [
@@ -166,5 +172,12 @@ if(getenv('LAUNCH') === 'true') {
 		'before' => 'auth',
 		'as' => 'find_players.filter',
 		'uses' => 'PlayersController@filter'
+	]);
+
+
+	Route::get('/find/teams', [
+		'before' => 'auth',
+		'as' => 'find.teams',
+		'uses' => 'TeamsController@index'
 	]);
 }

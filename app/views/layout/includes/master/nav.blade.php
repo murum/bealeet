@@ -1,5 +1,5 @@
 <div class="navbar">
-    <a class="navbar-brand" rel="home" href="{{ route('home') }}">
+    <a class="navbar-brand" rel="home" href="{{ route('flow') }}">
         <img src="/images/logo.png"/>
     </a>
 
@@ -35,13 +35,13 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('find_players') }}">
+                <a href="{{ route('follows') }}">
                     <i class="bealeet-following"></i>
                     Following
                 </a>
             </li>
             <li>
-                <a href="{{ route('find_players') }}">
+                <a href="{{ route('followers') }}">
                     <i class="bealeet-followers"></i>
                     Followers
                 </a>
@@ -50,7 +50,7 @@
             <li class="divider"></li>
 
             <li>
-                <a href="{{ route('find_players') }}">
+                <a href="{{ route('flow') }}">
                     <i class="bealeet-flow"></i>
                     Flow
                 </a>
@@ -64,7 +64,7 @@
             </li>
 
             <li>
-                <a href="{{ route('find_players') }}">
+                <a href="{{ route('find.teams') }}">
                     <i class="bealeet-teamfind"></i>
                     Find teams
                 </a>

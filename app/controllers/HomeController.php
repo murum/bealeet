@@ -1,7 +1,20 @@
 <?php
 
-class HomeController extends BaseController {
+use Bealeet\Users\UserRepository;
 
+class HomeController extends BaseController {
+	/**
+	 * @var UserRepository
+	 */
+	private $userRepository;
+
+	/**
+	 * @param UserRepository $userRepository
+	 */
+	public function __construct(UserRepository $userRepository)
+	{
+		$this->userRepository = $userRepository;
+	}
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -15,9 +28,10 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function index()
+	public function flow()
 	{
-		return View::make('home.index');
+		$players = $this->userRepository->findUsersSearchingClan();
+		return View::make('flow.index', compact('players'));
 	}
 
 }

@@ -31,18 +31,20 @@
                 @endif
             </ul>
 
-            @unless($player->skills->isEmpty())
-                <ul class="player-skills">
-                    @foreach($player->groupedSkills() as $skill)
-                        <li
-                                data-skill="{{ $skill->pivot->skill_id }}"
-                                data-amount="{{{ $skill->count - 1 }}}"
-                                class="player-skills-item">
-                            <span class="player-skills-item-name">{{{ $skill->name }}}</span>
-                            <span class="player-skills-item-value">{{{ $skill->count - 1 }}}</span>
-                    @endforeach
-                </ul>
-            @endunless
+            {{--
+                @unless($player->skills->isEmpty())
+                    <ul class="player-skills">
+                        @foreach($player->groupedSkills() as $skill)
+                            <li
+                                    data-skill="{{ $skill->pivot->skill_id }}"
+                                    data-amount="{{{ $skill->count - 1 }}}"
+                                    class="player-skills-item">
+                                <span class="player-skills-item-name">{{{ $skill->name }}}</span>
+                                <span class="player-skills-item-value">{{{ $skill->count - 1 }}}</span>
+                        @endforeach
+                    </ul>
+                @endunless
+            --}}
         </div>
 
         <div class="player__buttons">

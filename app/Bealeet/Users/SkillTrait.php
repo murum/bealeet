@@ -23,6 +23,7 @@ trait SkillTrait {
 	 */
 	public function hasSkills()
 	{
+
 		return ($this->skills()->count() > 0) ? true : false;
 	}
 
@@ -84,7 +85,7 @@ trait SkillTrait {
 		$skills = Skill::all();
 		foreach($skills as $skill) {
 			if($skill->game_id == $this->favoriteGame()->id) {
-				$return_skills[] = $skill->name;
+				$return_skills[$skill->id] = $skill->name;
 			}
 		}
 		return $return_skills;

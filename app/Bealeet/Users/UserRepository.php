@@ -155,6 +155,17 @@ class UserRepository {
 	}
 
 	/**
+	 * Fetch followers
+	 *
+	 * @param $user
+	 * @return mixed
+	 */
+	public function findFollowers(User $user)
+	{
+		return $user->followers()->get();
+	}
+
+	/**
 	 * Add a game
 	 *
 	 * @param $gameIdToAttach

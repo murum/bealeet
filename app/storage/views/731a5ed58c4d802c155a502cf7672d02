@@ -34,18 +34,20 @@
                 <?php endif; ?>
             </ul>
 
-            <?php if ( ! ($player->skills->isEmpty())): ?>
-                <ul class="player-skills">
-                    <?php foreach($player->groupedSkills() as $skill): ?>
-                        <li
-                                data-skill="<?php echo $skill->pivot->skill_id; ?>"
-                                data-amount="<?php echo e($skill->count - 1); ?>"
-                                class="player-skills-item">
-                            <span class="player-skills-item-name"><?php echo e($skill->name); ?></span>
-                            <span class="player-skills-item-value"><?php echo e($skill->count - 1); ?></span>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
+            <?php /*
+                <?php if ( ! ($player->skills->isEmpty())): ?>
+                    <ul class="player-skills">
+                        <?php foreach($player->groupedSkills() as $skill): ?>
+                            <li
+                                    data-skill="<?php echo $skill->pivot->skill_id; ?>"
+                                    data-amount="<?php echo e($skill->count - 1); ?>"
+                                    class="player-skills-item">
+                                <span class="player-skills-item-name"><?php echo e($skill->name); ?></span>
+                                <span class="player-skills-item-value"><?php echo e($skill->count - 1); ?></span>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            */ ?>
         </div>
 
         <div class="player__buttons">

@@ -21,4 +21,9 @@ class Skill extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'skills';
+
+
+	public function users() {
+		return $this->belongsToMany('Bealeet\Users\User', 'users_skills');
+	}
 }

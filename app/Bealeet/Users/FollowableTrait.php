@@ -45,4 +45,8 @@ trait FollowableTrait {
 		return ($this->followedUsers()->count() > 0);
 	}
 
+	public function hasFollowers() {
+		return ($this->followers()->count() > 0);
+	}
+
 }

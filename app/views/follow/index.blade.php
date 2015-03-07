@@ -3,18 +3,15 @@
 @section('content')
 
   @if( $currentUser->isFollowingUsers() )
-    <h1>Follows</h1>
+    <h1>Following</h1>
 
-    <div class="list-group">
-      @foreach($follows as $follow)
-        <a class="list-group-item" href="{{ route('user_profile', $follow->id) }}">
-          {{{ $follow->username }}}
-        </a>
+    <ul class="row following__players">
+      @foreach($users as $user)
+        @include('follow.partials.user')
       @endforeach
-    </div>
-  @endif
+    </ul>
 
-  @unless( $currentUser->isFollowingUsers() )
+  @else
     <h1>You ain't following any users</h1>
   @endif
 
