@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('content')
-    <h1>Conversations</h1>
+    <h1>Messages</h1>
     <div class="row">
         <div class="col-xs-12 col-sm-5">
             <div class="conversations__left">
