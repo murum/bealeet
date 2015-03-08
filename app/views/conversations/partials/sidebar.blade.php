@@ -2,7 +2,7 @@
     {{ Form::open(['route' => 'conversations.store']) }}
     <div class="col-xs-8">
         <div class="form-group">
-            {{ Form::text('username', null, ['placeholder' => 'Username', 'class' => 'form-control']) }}
+            {{ Form::text('conversation', null, ['placeholder' => 'Chat group name', 'class' => 'form-control']) }}
         </div>
     </div>
     <div class="col-xs-4">

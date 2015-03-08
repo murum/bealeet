@@ -52,24 +52,18 @@ class ConversationsController extends BaseController {
 	}
 
 	public function store() {
-		$input = Input::only('username');
+		$input = Input::only('conversation');
 
 		$conversation = new Conversation();
 
-		$conversation->name = Auth::user()->username . ', ' . $input['username'];
+		$conversation->name = $input['conversation'];
 
 		if($conversation->save()) {
-			$guest = User::whereUsername($input['username'])->first();
-			if($guest) {
-				$conversation->users()->attach([Auth::user()->id, $guest->id]);
 
-				Flash::success('Your conversation was created.');
-				return Redirect::route('profile.conversations.show', $conversation->id);
-			} else {
-				$conversation->delete();
-				Flash::error('The username you entered does not exist');
-				return Redirect::route('profile.conversations');
-			}
+			$conversation->users()->attach(Auth::user()->id);
+
+			Flash::success('Your conversation was created.');
+			return Redirect::route('profile.conversations.show', $conversation->id);
 		} else {
 			Flash::error('You could not create a new conversation.');
 			return Redirect::route('profile.conversations');

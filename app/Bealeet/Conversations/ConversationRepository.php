@@ -21,6 +21,10 @@ trait ConversationRepository {
 		return ($this->messages()->where('writer_id', '!=', Auth::user()->id)->orderBy('created_at', 'desc')->count() > 0) ? true : false;
 	}
 
+	public function hasMessages() {
+		return ($this->messages()->count() > 0) ? true : false;
+	}
+
 	public function getCurrentConversationUser() {
 		return ConversationUser::
 			whereUserId(Auth::user()->id)
