@@ -1,16 +1,21 @@
 <li class="col-xs-12 conversation__message">
     <div class="row">
-        <div class="col-xs-12 col-sm-1">
-            <div class="text-smaller conversation__message-writer">
-                {{ $message->created_at->format('H:i:s') }}
-            </div>
+        <div class="conversation__message__avatar pull-left">
+            <img class="img-responsive img-inline img-round" src="{{ $message->writer->present()->gravatar() }}" alt="{{ $message->writer->username }}" />
         </div>
-        <div class="col-xs-4 col-sm-2">
-            <div class="text-smaller conversation__message-writer">
-                {{ $message->writer->username }}
+
+        <div class="conversation__message__meta pull-left">
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ $message->writer->username }}
+                </div>
+                <div class="col-xs-6 pull-right text-right">
+                    {{ $message->created_at->format('H:i:s') }}
+                </div>
             </div>
+
         </div>
-        <div class="col-xs-8 col-sm-9">
+        <div class="conversation__message__content pull-right">
             <div class="conversation__message-message">
                 {{ $message->message }}
             </div>

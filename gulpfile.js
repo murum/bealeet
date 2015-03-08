@@ -59,7 +59,8 @@ gulp.task('js-libs', function() {
         componentsDir + '/chosen-bower/chosen.jquery.min.js',
         componentsDir + '/bootstrap-select/dist/js/bootstrap-select.min.js',
         componentsDir + '/sweetalert/lib/sweet-alert.min.js',
-        componentsDir + '/matchHeight/jquery.matchHeight.js'
+        componentsDir + '/matchHeight/jquery.matchHeight.js',
+        componentsDir + '/moment/min/moment-with-locales.js'
     ]
     return gulp.src(libs)
         .pipe(concat('libs.js'))

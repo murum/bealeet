@@ -1,18 +1,23 @@
 <li class="col-xs-12 conversation__message">
     <div class="row">
-        <div class="col-xs-12 col-sm-1">
-            <div class="text-smaller conversation__message-writer">
-                <?php echo $message->created_at->format('H:i:s'); ?>
-
-            </div>
+        <div class="conversation__message__avatar pull-left">
+            <img class="img-responsive img-inline img-round" src="<?php echo $message->writer->present()->gravatar(); ?>" alt="<?php echo $message->writer->username; ?>" />
         </div>
-        <div class="col-xs-4 col-sm-2">
-            <div class="text-smaller conversation__message-writer">
-                <?php echo $message->writer->username; ?>
 
+        <div class="conversation__message__meta pull-left">
+            <div class="row">
+                <div class="col-xs-6">
+                    <?php echo $message->writer->username; ?>
+
+                </div>
+                <div class="col-xs-6 pull-right text-right">
+                    <?php echo $message->created_at->format('H:i:s'); ?>
+
+                </div>
             </div>
+
         </div>
-        <div class="col-xs-8 col-sm-9">
+        <div class="conversation__message__content pull-right">
             <div class="conversation__message-message">
                 <?php echo $message->message; ?>
 

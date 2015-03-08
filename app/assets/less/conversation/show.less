@@ -1,7 +1,49 @@
-.conversation__message {
-  border-bottom: 1px solid @light-darkest;
+.conversations__right {
+  background: @lightest;
+  padding: 15px 15px 0 15px;
 }
 
-.conversation__user {
-  border-bottom: 1px solid @light-darkest;
+.conversation__users {
+  .row;
+
+  margin: 15px 0;
+
+  .conversation__user {
+    float: left;
+    margin: 0 3px;
+  
+    img {
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+  }
+}
+
+.conversation__message {
+  padding: 10px;
+
+  &:nth-child(odd) {
+    background: @light;
+  }
+
+  .conversation__message__avatar {
+    padding: 0 15px;
+    text-align: center;
+    width: 15%;
+  }
+
+  .conversation__message__meta {
+    color: @brand-primary;
+    clear: right;
+    font-weight: 300;
+    line-height: 40px;
+    padding-right: 15px;
+    width: 85%;
+  }
+
+  .conversation__message__content {
+    width: 85%;
+    padding-right: 15px;
+  }
 }

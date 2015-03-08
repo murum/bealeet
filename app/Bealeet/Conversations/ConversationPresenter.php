@@ -23,4 +23,16 @@ class ConversationPresenter extends Presenter {
         $conversation = Conversation::find($this->id);
         return ($conversation->hasUnreadMessages()) ? 'unread' : 'read';
     }
+
+    public function lastActiveGravatar() {
+        $conversation = Conversation::find($this->id);
+        $last_message = $conversation->messages->last();
+        return $last_message->writer->present()->gravatar();
+    }
+
+    public function lastActiveTime() {
+        $conversation = Conversation::find($this->id);
+        $last_message = $conversation->messages->last();
+        return $last_message->created_at;
+    }
 }

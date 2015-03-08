@@ -1,0 +1,54 @@
+.conversations__left {
+  background: @lightest;
+  padding: 15px;
+}
+.conversations {
+  .conversation {
+    font-weight: 300;
+
+    &.read {
+      a {
+        background: @brand-primary;
+        text-decoration: none;
+        color: @lightest;
+
+        &:hover {
+          background: darken(@brand-primary, 10%);
+        }
+      }
+    }
+    
+    a {
+      color: @dark-light;
+      display: block;
+
+      padding: 10px 15px;
+      margin: 0 -15px;
+
+      &:hover {
+        background: @light;
+        text-decoration: none;
+      }
+    }
+
+    .conversation__image {
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+
+      margin-right: 12px;
+    }
+
+    .conversation__name {
+      line-height: 40px;
+    }
+
+    .conversation__last {
+      line-height: 40px;
+
+      .conversation__last__time {
+        margin-left: 12px;   
+      }
+    }
+  }
+}

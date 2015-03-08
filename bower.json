@@ -7,6 +7,7 @@
     "chosen-bower": "~1.1.0",
     "bootstrap-select": "~1.6.3",
     "sweetalert": "~0.2.1",
-    "matchHeight": "~0.5.2"
+    "matchHeight": "~0.5.2",
+    "moment": "~2.9.0"
   }
 }

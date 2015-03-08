@@ -1,4 +1,3 @@
 <li class="conversation__user">
-    <?php echo $user->username; ?>
-
+    <img src="<?php echo $user->present()->gravatar(50); ?>" alt="<?php echo $user->username; ?>" />
 </li>

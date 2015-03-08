@@ -249,6 +249,16 @@ Bealeet.fadeoutLinks = {
     }
 };
 
+Bealeet.conversations = {
+    init: function() {
+        this.setConversationsTimes();
+    },
+    setConversationsTimes: function() {
+        var value = moment($('span.conversation__last__time').data('time')).fromNow();
+        $('span.conversation__last__time').html(value);
+    }
+};
+
 $(function() {
     Bealeet.fadeoutLinks.init();
 
@@ -260,6 +270,8 @@ $(function() {
     Bealeet.skills.init();
 
     Bealeet.findPlayers.init();
+
+    Bealeet.conversations.init();
 
     $(document).ready(function() {
         $("div.container").animate({
