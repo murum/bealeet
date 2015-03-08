@@ -62,7 +62,7 @@ class SessionsController extends \BaseController {
 
         Flash::message('You have now been logged out.');
 
-        return Redirect::home();
+        return Redirect::to('login');
     }
 
 }
