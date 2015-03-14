@@ -16,7 +16,7 @@ class ConversationsController extends BaseController {
 	public function index()
 	{
 		$user = Auth::user();
-		$conversationsToCheck = Conversation::with('users')->get();
+		$conversationsToCheck = Conversation::with('users')->orderBy('updated_at', 'desc')->get();
 		$conversations = new Collection();
 
 		foreach($conversationsToCheck as $conversation) {
@@ -31,7 +31,7 @@ class ConversationsController extends BaseController {
 	public function show($id)
 	{
 		$user = Auth::user();
-		$conversationsToCheck = Conversation::with('users')->get();
+		$conversationsToCheck = Conversation::with(['users', 'messages'])->orderBy('updated_at', 'desc')->get();
 		$conversations = new Collection();
 
 		foreach($conversationsToCheck as $conversation) {
@@ -83,7 +83,10 @@ class ConversationsController extends BaseController {
 		$message->conversation_id = $conversation->id;
 		$message->writer_id = Auth::user()->id;
 		$message->message = $input['message'];
-		$message->save();
+		if($message->save()) {
+			$conversation->updated_at = Carbon::now();
+			$conversation->save();
+		}
 
 		return Redirect::back();
 	}
