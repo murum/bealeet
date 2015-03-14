@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="row">
-                            <?php echo Form::open(['route' => ['profile.conversation.post', $conversation->id]]); ?>
+                            <?php echo Form::open(['route' => ['profile.conversation.post', $conversation->id], 'class' => 'conversation-form']); ?>
 
                             <div class="col-xs-8">
                                 <div class="form-group">

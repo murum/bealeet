@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="row">
-                            {{ Form::open(['route' => ['profile.conversation.post', $conversation->id]]) }}
+                            {{ Form::open(['route' => ['profile.conversation.post', $conversation->id], 'class' => 'conversation-form']) }}
                             <div class="col-xs-8">
                                 <div class="form-group">
                                     {{ Form::textarea('message', null, ['placeholder' => 'Write your message...', 'class' => 'form-control']) }}

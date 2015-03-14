@@ -17,7 +17,7 @@
         </div>
         <div class="conversation__message__content pull-right">
             <div class="conversation__message-message">
-                {{ $message->message }}
+                {{ nl2br($message->message) }}
             </div>
         </div>
     </div>

@@ -1,40 +1,40 @@
-window.fbAsyncInit = function() {
+window.fbAsyncInit = function () {
     FB.init({
-        appId      : '671187556307321',
-        xfbml      : true,
-        version    : 'v2.1'
+        appId: '671187556307321',
+        xfbml: true,
+        version: 'v2.1'
     });
 };
 
 var Bealeet = {};
 
 Bealeet.toggle = {
-    init: function() {
+    init: function () {
         $('.dropdown a.dropdown-toggle').on('click', this.toggleDropdown);
         $('.dropdown a.dropdown-close').on('click', this.hideDropdown);
         $('button.user-profile-subheader-games-add-button').on('click', this.toggleAddGameDropdown);
         $('button.user-profile-skills-add-button').on('click', this.toggleAddSkillDropdown);
     },
-    toggleDropdown: function(e) {
+    toggleDropdown: function (e) {
         e.preventDefault();
         $(this).closest('.dropdown').toggleClass('open');
     },
-    hideDropdown: function(e) {
+    hideDropdown: function (e) {
         e.preventDefault();
         $(this).closest('.dropdown').removeClass('open');
     },
-    toggleAddGameDropdown: function(e) {
+    toggleAddGameDropdown: function (e) {
         e.preventDefault();
         $(this).closest('.user-profile-subheader-games-add').toggleClass('open');
     },
-    toggleAddSkillDropdown: function(e) {
+    toggleAddSkillDropdown: function (e) {
         e.preventDefault();
         $(this).closest('.user-profile-skills-add').toggleClass('open');
     }
 };
 
 Bealeet.chosen = {
-    init: function() {
+    init: function () {
         $('div.user-profile-subheader-games-add select.chosen-list')
             .chosen({width: "100%"})
             .change(this.userChangeGames);
@@ -42,7 +42,7 @@ Bealeet.chosen = {
             .chosen({width: "100%"})
             .change(this.userChangeSkills);
     },
-    userChangeGames: function(data, gameChange) {
+    userChangeGames: function (data, gameChange) {
         var form = $(this).closest('form');
         var url = form.attr('action');
 
@@ -51,12 +51,12 @@ Bealeet.chosen = {
             type: 'put',
             dataType: 'json',
             data: gameChange,
-            success: function(data) {
+            success: function (data) {
                 FlashMessage.success(data.message);
             },
-            error: function(data) {
+            error: function (data) {
                 var data = $.parseJSON(data.responseText);
-                if(data.message) {
+                if (data.message) {
                     FlashMessage.error(data.message);
                 } else {
                     FlashMessage.error(data.error.message);
@@ -64,11 +64,11 @@ Bealeet.chosen = {
             }
         });
     },
-    userChangeSkills: function(data, skillChange) {
+    userChangeSkills: function (data, skillChange) {
         var form = $(this).closest('form');
         var url = form.attr('action');
 
-        if(skillChange.deselected) {
+        if (skillChange.deselected) {
             swal({
                 title: "Are you sure?",
                 text: "When you remove a skill you will also lose all your points for the specific skill.!",
@@ -79,19 +79,19 @@ Bealeet.chosen = {
                 cancelButtonText: "Regret",
                 closeOnConfirm: true,
                 closeOnCancel: true
-            }, function(isConfirm){
+            }, function (isConfirm) {
                 if (isConfirm) {
                     $.ajax({
                         url: url,
                         type: 'put',
                         dataType: 'json',
                         data: skillChange,
-                        success: function(data) {
+                        success: function (data) {
                             FlashMessage.success(data.message);
                         },
-                        error: function(data) {
+                        error: function (data) {
                             var data = $.parseJSON(data.responseText);
-                            if(data.message) {
+                            if (data.message) {
                                 FlashMessage.error(data.message);
                             } else {
                                 FlashMessage.error(data.error.message);
@@ -108,12 +108,12 @@ Bealeet.chosen = {
                 type: 'put',
                 dataType: 'json',
                 data: skillChange,
-                success: function(data) {
+                success: function (data) {
                     FlashMessage.success(data.message);
                 },
-                error: function(data) {
+                error: function (data) {
                     var data = $.parseJSON(data.responseText);
-                    if(data.message) {
+                    if (data.message) {
                         FlashMessage.error(data.message);
                     } else {
                         FlashMessage.error(data.error.message);
@@ -125,10 +125,10 @@ Bealeet.chosen = {
 };
 
 Bealeet.switcher = {
-    init: function() {
+    init: function () {
         $('input#user-profile-searching-switcher').on('change', this.userChangeSearchStatus)
     },
-    userChangeSearchStatus: function() {
+    userChangeSearchStatus: function () {
         var form = $(this).closest('form');
         var url = form.attr('action');
         var isSearching = $(this).prop('checked');
@@ -138,12 +138,12 @@ Bealeet.switcher = {
             type: 'put',
             dataType: 'json',
             data: {isSearching: isSearching},
-            success: function(data) {
+            success: function (data) {
                 FlashMessage.success(data.message);
             },
-            error: function(data) {
+            error: function (data) {
                 var data = $.parseJSON(data.responseText);
-                if(data.message) {
+                if (data.message) {
                     FlashMessage.error(data.message);
                 } else {
                     FlashMessage.error(data.error.message);
@@ -154,14 +154,14 @@ Bealeet.switcher = {
 }
 
 Bealeet.selectpicker = {
-    init: function() {
+    init: function () {
         $('select.selectpicker').selectpicker();
 
         $('div.user-profile-subheader-games-primary select')
             .selectpicker()
             .on('change', this.userChangePrimaryGame);
     },
-    userChangePrimaryGame: function() {
+    userChangePrimaryGame: function () {
         var form = $(this).closest('form');
         var url = form.attr('action');
         var favoriteGame = $(this).val();
@@ -171,12 +171,12 @@ Bealeet.selectpicker = {
             type: 'put',
             dataType: 'json',
             data: {favoriteGameId: favoriteGame},
-            success: function(data) {
+            success: function (data) {
                 FlashMessage.success(data.message);
             },
-            error: function(data) {
+            error: function (data) {
                 var data = $.parseJSON(data.responseText);
-                if(data.message) {
+                if (data.message) {
                     FlashMessage.error(data.message);
                 } else {
                     FlashMessage.error(data.error.message);
@@ -187,10 +187,10 @@ Bealeet.selectpicker = {
 };
 
 Bealeet.skills = {
-    init: function() {
-      $('.btn-testify-skill').on('click', this.addSkillPoint);
+    init: function () {
+        $('.btn-testify-skill').on('click', this.addSkillPoint);
     },
-    addSkillPoint: function() {
+    addSkillPoint: function () {
         var that = $(this),
             form = that.closest('form'),
             url = form.attr('action'),
@@ -202,7 +202,7 @@ Bealeet.skills = {
             type: 'post',
             dataType: 'json',
             data: {skillId: skill},
-            success: function(data) {
+            success: function (data) {
                 form.remove();
                 parent.removeClass('plusable');
 
@@ -210,9 +210,9 @@ Bealeet.skills = {
 
                 FlashMessage.success(data.message);
             },
-            error: function(data) {
+            error: function (data) {
                 var data = $.parseJSON(data.responseText);
-                if(data.message) {
+                if (data.message) {
                     FlashMessage.error(data.message);
                 } else {
                     FlashMessage.error(data.error.message);
@@ -223,23 +223,23 @@ Bealeet.skills = {
 };
 
 Bealeet.findPlayers = {
-    init: function() {
+    init: function () {
         $("select#filterGames").on('change', this.filterGame);
     },
-    filterGame: function() {
+    filterGame: function () {
 
         window.location.replace(window.location.origin + '/find/players/' + this.value);
     }
 };
 
 Bealeet.fadeoutLinks = {
-    init: function(){
+    init: function () {
         this.main();
     },
-    main: function() {
+    main: function () {
 
         $('a').click(function () {
-            if( ($(this).attr('target') != '_blank') && ($(this).attr('href').indexOf('mailto') == -1) && ($(this).attr('href').indexOf('#') == -1) ){
+            if (($(this).attr('target') != '_blank') && ($(this).attr('href').indexOf('mailto') == -1) && ($(this).attr('href').indexOf('#') == -1)) {
 
                 $('div.container').fadeOut(400);
 
@@ -250,16 +250,25 @@ Bealeet.fadeoutLinks = {
 };
 
 Bealeet.conversations = {
-    init: function() {
+    init: function () {
         this.setConversationsTimes();
+        $('form.conversation-form textarea').on('keyup', this.sendOnEnterClick);
     },
-    setConversationsTimes: function() {
-        var value = moment($('span.conversation__last__time').data('time')).fromNow();
-        $('span.conversation__last__time').html(value);
+    setConversationsTimes: function () {
+        $.each($('span.conversation__last__time'), function() {
+            var value = moment($(this).data('time')).fromNow();
+            $(this).html(value);
+        });
+    },
+    sendOnEnterClick: function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            $(this).closest('form').submit();
+        }
+        return false;
     }
 };
 
-$(function() {
+$(function () {
     Bealeet.fadeoutLinks.init();
 
     Bealeet.toggle.init();
@@ -273,7 +282,7 @@ $(function() {
 
     Bealeet.conversations.init();
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("div.container").animate({
             opacity: 1
         }, 400);
