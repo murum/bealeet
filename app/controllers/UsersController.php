@@ -143,7 +143,7 @@ class UsersController extends \BaseController {
 
 		Flash::success('Glad to have you as a new Bealeet member!');
 
-        return Redirect::home();
+        return Redirect::route('flow');
 	}
 
 	/**
