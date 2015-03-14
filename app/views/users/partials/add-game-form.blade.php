@@ -1,8 +1,7 @@
-<div class="pull-left">
+<div class="pull-right">
   <div class="user-profile-subheader-games-add">
     <button class="btn btn-primary user-profile-subheader-games-add-button user-profile-subheader-games-add-button-open">
-      <i class="fa fa-plus"></i>
-      Add Games
+      Add Game
     </button>
 
     <button class="btn btn-danger user-profile-subheader-games-add-button user-profile-subheader-games-add-button-close">

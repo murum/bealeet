@@ -1,10 +1,10 @@
 .user-profile-header {
   width: 100%;
-  height: 130px;
+  height: 207px;
 
-  background: @dark;
+  background: @lightest;
 
-  margin: 0 0 1em;
+  margin: 0;
 
   &.user-profile-header-cs-go {
     background: url('../images/profile-header-cs-go.jpg') no-repeat;
@@ -13,43 +13,10 @@
   &.user-profile-header-dota-2 {
     background: url('../images/profile-header-dota.jpg') no-repeat;
   }
-
-  .user-profile-header-gravatar {
-    margin: 0 2% 0 15%;
-
-    line-height: 130px;
-
-    img.user-profile-header-gravatar-image {
-      border-radius: 50%;
-
-      border: 4px solid @blue-grey;
-    }
-  }
-
-  .user-profile-header-title {
-    padding-left: 2%;
-
-    border-left: 6px solid @light;
-    margin-top: 27px;
-
-    h1.user-profile-header-title-username {
-      margin: -12px 0 0;
-      line-height: 1.6em;
-      color: @light;
-      font-weight: 300;
-    }
-
-    h2.user-profile-header-title-clan {
-      display: none;
-
-      color: @light;
-      margin: 0 0 5px;
-      text-transform: uppercase;
-      font-size: 1em;
-    }
-  }
 }
 .user-profile-subheader {
+  margin-top: 0;
+
   .user-profile-subheader-primary-game {
     font-weight: 400;
     font-family: @font-headings;
@@ -108,75 +75,34 @@
 
   .user-profile-subheader-searching {
     h3.user-profile-subheader-searching-title {
-      margin: 0 12px 0 0;
-
-      font-size: 1em;
-      line-height: 34px;
+      color: @brand-primary;
       font-family: @font-headings;
-      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 1.125em;
+      line-height: 47px;
+      margin: 0 0 0 12px;
     }
 
-    div.user-profile-subheader-searching-switcher {
-      .user-profile-subheader-searching-switcher-item {
-        position: relative;
-        width: 100px;
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select: none;
-      }
-      .user-profile-subheader-searching-switcher-item-checkbox {
-        display: none;
-      }
-      .user-profile-subheader-searching-switcher-item-label {
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-      }
-      .user-profile-subheader-searching-switcher-item-inner {
-        display: block; width: 200%; margin-left: -100%;
-        transition: margin 0.3s ease-in 0s;
-      }
-      .user-profile-subheader-searching-switcher-item-inner:before, .user-profile-subheader-searching-switcher-item-inner:after {
-        display: block;
-        float: left; width: 50%; height: 34px; padding: 0; line-height: 34px;
+    form {
+      height: 47px;
+    }
 
-        color: white;
-        font-family: @font-bread;
-        font-weight: bold;
-        background-clip: padding-box;
-      }
-      .user-profile-subheader-searching-switcher-item-inner:before {
-        content: "OFF";
-        padding-left: 10px;
-        background-color: @dark;
-        color: @light;
-      }
-      .user-profile-subheader-searching-switcher-item-inner:after {
-        content: "ON";
-        padding-right: 10px;
-        background-color: @dark;
-        color: @light;
-        text-align: right;
-      }
-      .user-profile-subheader-searching-switcher-item-switch {
-        display: block; width: 40px; margin: 0px;
-        background: @brand-info;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 60px;
-        transition: all 0.3s ease-in 0s;
-      }
-      .user-profile-subheader-searching-switcher-item-label {
-        margin-bottom: 0;
-      }
-      .user-profile-subheader-searching-switcher-item-checkbox:checked + .user-profile-subheader-searching-switcher-item-label .user-profile-subheader-searching-switcher-item-inner {
-        margin-left: 0;
-      }
-      .user-profile-subheader-searching-switcher-item-checkbox:checked + .user-profile-subheader-searching-switcher-item-label .user-profile-subheader-searching-switcher-item-switch {
-        right: 0px;
+    input.user-profile-subheader-searching-switcher-item-checkbox {
+      display: none;
 
-        background: @brand-danger;
+      + label {
+        background: url('../images/checkbox-checked.svg');
+        border: none;
+        border-radius: 4px;
+        height: 47px;
+        width: 47px;
+
+        margin: 0;
+      }
+
+      &:checked + label {
+        background: @lightest;
+        border: 1px solid @brand-primary;
       }
     }
   }
@@ -185,17 +111,15 @@
 .user-profile-box {
 
   .user-profile-box-header {
-    padding-bottom: 15px;
     margin-bottom: 15px;
-    border-bottom: 2px dashed @light-darkest;
 
     h2 {
       margin: 0;
 
-      color: @dark;
+      color: @blue-grey;
 
-      font-family: @font-headings;
-      font-size: 2.5em;
+      font-size: 1.125em;
+      font-weight: bold;
     }
   }
 
@@ -218,6 +142,12 @@
   &.user-profile-box-overview {
 
     .user-profile-box-body {
+      .user-profile-username {
+        color: @brand-info;
+        font-size: 2.25em;
+        padding: 15px 0;
+      }
+
       table {
         .user-profile-row {
           td {
@@ -291,38 +221,49 @@
         .user-profile-skills-item {
           position: relative;
           float: left;
-          background: @light-darker;
-          padding: 6px 10px 5px 0;
+          background: @lightest;
+          padding: 12px;
           margin: 4px 10px 4px 0;
+          border: 1px solid @brand-info;
+          border-radius: 3px;
+          color: @brand-info;
+
+          margin-right: 46px;
 
           &.plusable {
-            margin-right: 41px;
+            margin-right: 92px;
           }
 
-          &:before {
+          &:after {
             content: attr(data-amount);
 
-            padding: 5px 10px;
-            position: relative;
-            top: 1px;
-            font-size: 1.25em;
-            line-height: 1em;
-            border-right: 10px solid @light-darker;
+            border-radius: 0 3px 3px;
 
-            background: @dark;
-            color: @dark-lighter;
+            padding: 16px 17px 16px;
+            right: -40px;
+            top: -1px;
+            position: absolute;
+            font-size: 1em;
+            line-height: 1em;
+
+            font-family: @font-family-sans-serif;
+
+            background: @brand-info;
+            color: @lightest;
           }
 
           .btn-testify-skill {
             position: absolute;
-            right: -31px;
-            top: 0;
-            height: 31px;
-            width: 31px;
+            right: -85px;
+            z-index: 2;
+            border: none;
+            top: -1px;
+            height: 46px;
+            width: 46px;
             text-align: center;
-            line-height: 31px;
+            line-height: 46px;
             padding: 0;
-            border-radius: 0;
+            border-radius: 0 3px 3px 0;
             font-size: 1.125em;
           }
         }

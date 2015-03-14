@@ -5,24 +5,9 @@
         @if( $currentUser->hasAFavoriteGame() )
             <div class="user-profile-header user-profile-header-{{ $currentUser->favoriteGame()->slug }}">
                 @else
-                    <div class="user-profile-header">
-                        @endif
-                        <div class="pull-left user-profile-header-gravatar">
-                            <img class="user-profile-header-gravatar-image"
-                                 src="{{ $currentUser->present()->gravatar(75) }}" alt="{{ $currentUser->username }}">
-                        </div>
-                        <div class="pull-left user-profile-header-title">
-                            <h1 class="user-profile-header-title-username">
-                                {{{ $currentUser->username }}}
-                            </h1>
-
-                            @if( $currentUser->searching_team )
-                                <h2 class="user-profile-header-title-clan">
-                                    Searching for clan
-                                </h2>
-                            @endif
-                        </div>
-                    </div>
+            <div class="user-profile-header">
+                @endif
+            </div>
 
                     <div class="modal-box user-profile-subheader">
                         <div class="row">
@@ -30,18 +15,19 @@
                                 <div class="pull-left">
                                     <div class="user-profile-subheader-games">
                                         @include('users.partials.primary-game-form')
-                                        @include('users.partials.add-game-form')
                                     </div>
                                 </div>
-                                <div class="pull-right">
+                                <div class="pull-left">
                                     <div class="user-profile-subheader-searching">
-                                        <div class="pull-right user-profile-subheader-searching-switcher">
+                                        <div class="pull-left">
                                             @include('users.partials.search-team-form')
                                         </div>
-                                        <h3 class="pull-right user-profile-subheader-searching-title">
+                                        <h3 class="pull-left user-profile-subheader-searching-title">
                                             Searching for team</h3>
                                     </div>
                                 </div>
+
+                                @include('users.partials.add-game-form')
                             </div>
                         </div>
                     </div>
@@ -56,7 +42,7 @@
                             <div data-match-height="profile-upper-box" class="modal-box">
                                 <div class="user-profile-box user-profile-box-messages">
                                     <div class="user-profile-box-header">
-                                        <h2>Conversations</h2>
+                                        <h2>Recent messages</h2>
                                     </div>
 
                                     <div class="user-profile-box-body">

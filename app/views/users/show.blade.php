@@ -7,21 +7,6 @@
         @else
             <div class="user-profile-header">
         @endif
-                <div class="pull-left user-profile-header-gravatar">
-                    <img class="user-profile-header-gravatar-image" src="{{ $user->present()->gravatar(75) }}"
-                         alt="{{ $user->username }}">
-                </div>
-                <div class="pull-left user-profile-header-title">
-                    <h1 class="user-profile-header-title-username">
-                        {{{ $user->username }}}
-                    </h1>
-
-                    @if( $user->searching_team )
-                        <h2 class="user-profile-header-title-clan">
-                            Searching for clan
-                        </h2>
-                    @endif
-                </div>
             </div>
 
                 <div class="modal-box user-profile-subheader">
