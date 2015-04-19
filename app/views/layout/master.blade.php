@@ -2,7 +2,7 @@
 <html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"> -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <meta name="description" content="BeALeet.com the new place to be if you're a E-Sport entusiast">
     <meta name="keywords" content="ESport, e-sport, e, gaming, gamer, clan, player, dota, cs, cs:go, hon, lol, gamecoach">
