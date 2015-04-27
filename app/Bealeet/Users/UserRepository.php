@@ -1,5 +1,7 @@
 <?php namespace Bealeet\Users;
 
+use Carbon\Carbon;
+
 class UserRepository {
 
     /**
@@ -56,14 +58,14 @@ class UserRepository {
 		if(isset($game)) {
 			$users = static::getSearchingPlayersByGame($game);
 		} else {
-			$users = User::whereSearchingTeam(true)->paginate(30);
+			$users = User::whereSearchingTeam(true)->orderBy('searching_team_at', 'DESC')->paginate(30);
 		}
 		return $users;
 	}
 
 	public static function getSearchingPlayersByGame($game) {
 		$users_to_return = [];
-		$users = User::whereSearchingTeam(true)->get();
+		$users = User::whereSearchingTeam(true)->orderBy('searching_team_at', 'DESC')->get();
 		foreach ( $users as $user ) {
 			if($user->favoriteGame()->slug === $game->slug) {
 				$users_to_return[] = $user;
@@ -266,6 +268,9 @@ class UserRepository {
 		$isSearching = ($isSearching == 'true') ? false : true;
 
 		$user->searching_team = $isSearching;
+		if($isSearching) {
+			$user->searching_team_at = Carbon::now();
+		}
 		return $user->save();
 	}
 

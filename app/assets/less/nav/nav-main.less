@@ -100,6 +100,20 @@ div.navbar {
             margin-right: 20px;
           }
         }
+
+        &.active {
+          a,
+          a:hover,
+          a:focus {
+            text-decoration: none;
+
+            color: @dark;
+            background: @lighter;
+
+            padding-left: 25px;
+            border-left: 5px solid @brand-primary;
+          }
+        }
       }
     }
   }

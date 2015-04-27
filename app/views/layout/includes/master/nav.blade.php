@@ -23,7 +23,7 @@
 
     <div class="navbar-nav">
         <ul>
-            <li>
+            <li class="{{ Route::is('profile.conversations') ? 'active' : ''}}">
                 <a href="{{ route('profile.conversations') }}">
                     <i class="bealeet-messages"></i>
                     Messages
@@ -34,13 +34,13 @@
                     @endif
                 </a>
             </li>
-            <li>
+            <li class="{{ Route::is('follows') ? 'active' : ''}}">
                 <a href="{{ route('follows') }}">
                     <i class="bealeet-following"></i>
                     Following
                 </a>
             </li>
-            <li>
+            <li class="{{ Route::is('followers') ? 'active' : ''}}">
                 <a href="{{ route('followers') }}">
                     <i class="bealeet-followers"></i>
                     Followers
@@ -49,21 +49,21 @@
 
             <li class="divider"></li>
 
-            <li>
+            <li class="{{ Route::is('flow') ? 'active' : ''}}">
                 <a href="{{ route('flow') }}">
                     <i class="bealeet-flow"></i>
                     Flow
                 </a>
             </li>
 
-            <li>
+            <li class="{{ Route::is('find_players') ? 'active' : ''}}">
                 <a href="{{ route('find_players') }}">
                     <i class="bealeet-playerfind"></i>
                     Find players
                 </a>
             </li>
 
-            <li>
+            <li class="{{ Route::is('find.teams') ? 'active' : ''}}">
                 <a href="{{ route('find.teams') }}">
                     <i class="bealeet-teamfind"></i>
                     Find teams

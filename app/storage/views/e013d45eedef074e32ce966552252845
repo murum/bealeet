@@ -24,7 +24,7 @@
 
     <div class="navbar-nav">
         <ul>
-            <li>
+            <li class="<?php echo Route::is('profile.conversations') ? 'active' : ''; ?>">
                 <a href="<?php echo route('profile.conversations'); ?>">
                     <i class="bealeet-messages"></i>
                     Messages
@@ -36,13 +36,13 @@
                     <?php endif; ?>
                 </a>
             </li>
-            <li>
+            <li class="<?php echo Route::is('follows') ? 'active' : ''; ?>">
                 <a href="<?php echo route('follows'); ?>">
                     <i class="bealeet-following"></i>
                     Following
                 </a>
             </li>
-            <li>
+            <li class="<?php echo Route::is('followers') ? 'active' : ''; ?>">
                 <a href="<?php echo route('followers'); ?>">
                     <i class="bealeet-followers"></i>
                     Followers
@@ -51,21 +51,21 @@
 
             <li class="divider"></li>
 
-            <li>
+            <li class="<?php echo Route::is('flow') ? 'active' : ''; ?>">
                 <a href="<?php echo route('flow'); ?>">
                     <i class="bealeet-flow"></i>
                     Flow
                 </a>
             </li>
 
-            <li>
+            <li class="<?php echo Route::is('find_players') ? 'active' : ''; ?>">
                 <a href="<?php echo route('find_players'); ?>">
                     <i class="bealeet-playerfind"></i>
                     Find players
                 </a>
             </li>
 
-            <li>
+            <li class="<?php echo Route::is('find.teams') ? 'active' : ''; ?>">
                 <a href="<?php echo route('find.teams'); ?>">
                     <i class="bealeet-teamfind"></i>
                     Find teams
