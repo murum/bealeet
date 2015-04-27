@@ -17,6 +17,7 @@ if(getenv('LAUNCH') === 'true') {
 	Route::post('/', array('as' => 'launch', 'uses' => 'LaunchController@store'));
 } else {
 	Route::get('/', array('as' => 'flow', 'before' => 'auth', 'uses' => 'HomeController@flow'));
+	Route::get('/what', array('as' => 'what', 'uses' => 'HomeController@what'));
 
 	// Authentication
 	Route::get('/register', array('as' => 'register', 'uses' => 'UsersController@create'));

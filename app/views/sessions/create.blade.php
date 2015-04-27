@@ -40,7 +40,7 @@
     </div>
 
     <div class="text-center login__bealeet">
-        <a href="#">
+        <a href="{{ route("what") }}">
             What's Be A Leet?
         </a>
     </div>

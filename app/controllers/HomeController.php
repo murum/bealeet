@@ -34,4 +34,9 @@ class HomeController extends BaseController {
 		return View::make('flow.index', compact('players'));
 	}
 
+	public function what()
+	{
+		return View::make('home.what');
+	}
+
 }
